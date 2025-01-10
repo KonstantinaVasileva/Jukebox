@@ -3,14 +3,21 @@ article img {
     height: 30px;
     padding-left: 5px;
 }
-
-header {
+.nav-item{
+    background-color: rgba(204, 102, 0, .05);
     box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 2px 4px;
 }
+/*header {*/
+/*    box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    padding: 2px 4px;*/
+/*}*/
 header nav ul {
     padding: 20px 5px;
     margin: 0;
@@ -53,6 +60,7 @@ footer {
 form {
     border: 3px solid #f1f1f1;
     border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Full-width inputs */
@@ -63,6 +71,7 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    border-radius: 4px;
 }
 
 /* Set a style for all buttons */
@@ -130,6 +139,3 @@ p.introduction {
     text-align: center;
 }
 
-label {
-    border-radius: 4px;
-}
