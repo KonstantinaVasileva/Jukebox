@@ -139,3 +139,9 @@ p.introduction {
     text-align: center;
 }
 
+.text-danger{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: .5px .5px black;
+}
