@@ -6,18 +6,43 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
 <div th:replace="common::header"></div>
-<form style="width: 70%; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); color: white" class="register font-weight-bold" th:action="@{/register}" th:method="post" th:object="${registerUserDTO}">
+<form style="width: 70%; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); color: white"
+      class="register font-weight-bold"
+      th:action="@{/register}" th:method="post" th:object="${registerUserDTO}">
     <div class="container">
         <h1 class="register-title">Register</h1>
         <p class="register-title">Please fill in this form to create an account.</p>
+        <label th:for="username"><b>Username</b></label>
+        <input
+                th:field="*{username}"
+                th:errorclass="is-invalid"
+                type="text"
+                placeholder="Enter Username"
+                name="username"
+                id="username"
+                required>
+<!--        <p th:if="${#fields.hasErrors('username')}"-->
+<!--           th:errors="*{username}"-->
+<!--           class="invalid-feedback text-danger">Invalid username!</p>-->
+        <div th:if="${#fields.hasErrors('username')}" class="invalid-feedback">
+            <span th:each="err : ${#fields.errors('username')}" th:text="${err}"></span>
+        </div>
+
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+        <label th:for="psw-repeat"><b>Repeat Password</b></label>
+        <input
+                th:field="*{password}"
+                th:errorclass="'is-invalid'"
+                type="password"
+               placeholder="Repeat Password"
+               name="psw-repeat"
+               id="psw-repeat"
+               required>
 
         <label>
             <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -26,8 +51,8 @@ xmlns:th="http://www.thymeleaf.org">
         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
         <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="registerbtn" style="width: 50%; height: 44px; padding: unset">Register</button>
+            <button type="button" class="cancelbtn" style="border-radius: 10px">Cancel</button>
+            <button type="submit" class="registerbtn" style="width: 50%; height: 44px; padding: unset; border-radius: 10px">Register</button>
         </div>
     </div>
 </form>

@@ -1,10 +1,15 @@
 package bg.softuni.Jukebox.controller;
 
 import bg.softuni.Jukebox.model.dto.LoginDTO;
+import bg.softuni.Jukebox.model.dto.RegisterUserDTO;
 import bg.softuni.Jukebox.service.CurrentUser;
 import bg.softuni.Jukebox.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +28,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ModelAttribute("registerUserDTO")
+    public RegisterUserDTO registerUserDTO() {
+        return new RegisterUserDTO();
+    }
+
     @ModelAttribute("loginUserDTO")
     public LoginDTO getLoginUserDTO() {
         return new LoginDTO();
@@ -33,9 +43,49 @@ public class UserController {
         model.addAttribute("loginError");
     }
 
+//    @GetMapping("/register")
+//    public String register() {
+//        if (currentUser.isLoggedIn()) {
+//            return "redirect:/home";
+//        }
+//        return "register";
+//    }
+
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        RegisterUserDTO registerDTO = new RegisterUserDTO();
+        model.addAttribute("registerDTO", registerDTO);
+
+        // Add this for testing
+        BeanPropertyBindingResult errors = new BeanPropertyBindingResult(registerDTO, "registerDTO");
+        errors.rejectValue("username", "error.username", "Test error message");
+        model.addAttribute(BindingResult.MODEL_KEY_PREFIX + "registerDTO", errors);
+
         return "register";
+    }
+
+    @PostMapping("/register")
+    public String register(@Valid RegisterUserDTO registerUserDTO,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
+        System.out.println("Errors: " + bindingResult.getAllErrors());
+
+        if (registerUserDTO.getPassword()!=null &&
+                !registerUserDTO.getPassword().equals(registerUserDTO.getRepeatPassword())) {
+            bindingResult.addError(
+                    new FieldError("registerUserDTO", "repeatPassword", "Passwords do not match")
+            );
+        }
+
+        boolean isValid = userService.validateUserRegistration(registerUserDTO);
+        if (bindingResult.hasErrors() || !isValid) {
+            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.registerUserDTO", bindingResult);
+            return "register";
+        }
+        userService.register(registerUserDTO);
+        return "redirect:/home";
     }
 
     @GetMapping("/login")
@@ -53,7 +103,7 @@ public class UserController {
     public String login(LoginDTO loginDTO,
                         RedirectAttributes redirectAttributes) {
 
-        Boolean login = userService.login(loginDTO.getUsername(), loginDTO.getPassword());
+        boolean login = userService.login(loginDTO.getUsername(), loginDTO.getPassword());
         if (!login) {
             redirectAttributes.addFlashAttribute("message", "Invalid username or password");
             redirectAttributes.addFlashAttribute("loginError", true);

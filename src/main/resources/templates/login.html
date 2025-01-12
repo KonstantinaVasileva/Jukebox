@@ -22,14 +22,14 @@ xmlns:th="http://www.thymeleaf.org">
             <label for="password"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
-            <button type="submit">Login</button>
+            <button type="submit" style="border-radius: 10px">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
 
         <div class="container">
-            <button type="button" class="cancelbtn"><a th:href="@{/}"> Cancel </a> </button>
+            <button type="button" class="cancelbtn" style="border-radius: 10px; width: 150px"><a th:href="@{/}"> Cancel </a> </button>
             <span class="psw"> <a href="#">Forgot password?</a></span>
         </div>
     </form>

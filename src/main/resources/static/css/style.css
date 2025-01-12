@@ -11,24 +11,14 @@ article img {
     display: flex;
     justify-content: space-between;
     padding: 2px 4px;
+    margin: 0 10px;
 }
 
-/*header {*/
-/*    box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);*/
-/*    align-items: center;*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    padding: 2px 4px;*/
-/*}*/
 header nav ul {
     padding: 20px 5px;
     margin: 0;
     list-style: none;
     display: flex;
-}
-
-.nav-item {
-    margin: 0 10px;
 }
 
 .nav-link {
@@ -106,12 +96,6 @@ button:hover {
     background-color: #f44336;
 }
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn {
-    float: left;
-    width: 50%;
-}
-
 /* Add padding to containers */
 .container {
     padding: 16px;
@@ -128,10 +112,6 @@ span.psw {
     span.psw {
         display: block;
         float: none;
-    }
-
-    .cancelbtn {
-        width: 100%;
     }
 
 }
