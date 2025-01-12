@@ -3,7 +3,8 @@ article img {
     height: 30px;
     padding-left: 5px;
 }
-.nav-item{
+
+.nav-item {
     background-color: rgba(204, 102, 0, .05);
     box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);
     align-items: center;
@@ -11,6 +12,7 @@ article img {
     justify-content: space-between;
     padding: 2px 4px;
 }
+
 /*header {*/
 /*    box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);*/
 /*    align-items: center;*/
@@ -24,20 +26,24 @@ header nav ul {
     list-style: none;
     display: flex;
 }
+
 .nav-item {
     margin: 0 10px;
 }
+
 .nav-link {
     color: white;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
 }
+
 style body {
     align-items: center;
 }
+
 main {
-    max-width: 600px;
+    max-width: 550px;
     margin: -30px 255px 100px 380px;
     display: flex;
     align-items: center;
@@ -47,6 +53,7 @@ main {
     padding: 50px;
     color: white;
 }
+
 footer {
     box-shadow: 0 3px 8px rgba(60, 60, 60, 0.2);
     align-items: center;
@@ -61,6 +68,7 @@ form {
     border: 3px solid #f1f1f1;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.2);
+    max-width: 400px;
 }
 
 /* Full-width inputs */
@@ -98,6 +106,12 @@ button:hover {
     background-color: #f44336;
 }
 
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn {
+    float: left;
+    width: 50%;
+}
+
 /* Add padding to containers */
 .container {
     padding: 16px;
@@ -115,13 +129,20 @@ span.psw {
         display: block;
         float: none;
     }
+
     .cancelbtn {
         width: 100%;
     }
 
 }
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
-main{
+main {
     flex-direction: column;
 }
 
@@ -139,9 +160,21 @@ p.introduction {
     text-align: center;
 }
 
-.text-danger{
+.text-danger {
     color: red;
     font-weight: bold;
     text-align: center;
     text-shadow: .5px .5px black;
+}
+
+.register-title {
+    text-align: center;
+}
+
+.register {
+    max-width: 400px;
+    margin-right: 150px;
+    margin-left: 476px;
+    display: flex;
+    text-align: center;
 }

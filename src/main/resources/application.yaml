@@ -3,8 +3,12 @@ spring:
     name: jukebox
   thymeleaf:
     check-template: true
+    check-template-location: true
     cache: false
     prefix: file:./src/main/resources/templates/
+    resources:
+      static-location: file:./src/main/resources/static/
+      cache-period: 0
 
   datasource:
     url: jdbc:mysql://localhost:3306/jukebox?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
