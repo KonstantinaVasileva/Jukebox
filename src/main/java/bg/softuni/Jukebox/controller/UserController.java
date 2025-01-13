@@ -85,7 +85,7 @@ public class UserController {
             return "redirect:/register";
         }
         userService.register(registerUserDTO);
-        return "redirect:/home";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -109,6 +109,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("loginError", true);
             return "redirect:/login";
         }
+        currentUser.login(loginDTO.getUsername());
 
         return "redirect:/home";
     }

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean validateUserRegistration(RegisterUserDTO registerUserDTO) {
         User byUsernameOrEmail = userRepository.findByUsernameOrEmail(registerUserDTO.getUsername(), registerUserDTO.getEmail());
-        if (byUsernameOrEmail == null) {
+        if (byUsernameOrEmail != null) {
             return false;
         }
         return true;
