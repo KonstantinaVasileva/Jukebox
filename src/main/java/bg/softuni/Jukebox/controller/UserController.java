@@ -43,26 +43,26 @@ public class UserController {
         model.addAttribute("loginError");
     }
 
-//    @GetMapping("/register")
-//    public String register() {
-//        if (currentUser.isLoggedIn()) {
-//            return "redirect:/home";
-//        }
-//        return "register";
-//    }
-
     @GetMapping("/register")
-    public String register(Model model) {
-        RegisterUserDTO registerDTO = new RegisterUserDTO();
-        model.addAttribute("registerDTO", registerDTO);
-
-        // Add this for testing
-        BeanPropertyBindingResult errors = new BeanPropertyBindingResult(registerDTO, "registerDTO");
-        errors.rejectValue("username", "error.username", "Test error message");
-        model.addAttribute(BindingResult.MODEL_KEY_PREFIX + "registerDTO", errors);
-
+    public String register() {
+        if (currentUser.isLoggedIn()) {
+            return "redirect:/home";
+        }
         return "register";
     }
+
+//    @GetMapping("/register")
+//    public String register(Model model) {
+//        RegisterUserDTO registerDTO = new RegisterUserDTO();
+//        model.addAttribute("registerDTO", registerDTO);
+//
+//        // Add this for testing
+//        BeanPropertyBindingResult errors = new BeanPropertyBindingResult(registerDTO, "registerDTO");
+//        errors.rejectValue("username", "error.username", "Test error message");
+//        model.addAttribute(BindingResult.MODEL_KEY_PREFIX + "registerDTO", errors);
+//
+//        return "register";
+//    }
 
     @PostMapping("/register")
     public String register(@Valid RegisterUserDTO registerUserDTO,
@@ -82,7 +82,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.registerUserDTO", bindingResult);
-            return "register";
+            return "redirect:/register";
         }
         userService.register(registerUserDTO);
         return "redirect:/home";

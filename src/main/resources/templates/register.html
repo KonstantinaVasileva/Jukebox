@@ -15,34 +15,56 @@ xmlns:th="http://www.thymeleaf.org">
         <label th:for="username"><b>Username</b></label>
         <input
                 th:field="*{username}"
-                th:errorclass="is-invalid"
+                th:errorclass="'is-invalid'"
+                class="form-control"
                 type="text"
                 placeholder="Enter Username"
                 name="username"
                 id="username"
                 required>
-<!--        <p th:if="${#fields.hasErrors('username')}"-->
-<!--           th:errors="*{username}"-->
-<!--           class="invalid-feedback text-danger">Invalid username!</p>-->
-        <div th:if="${#fields.hasErrors('username')}" class="invalid-feedback">
-            <span th:each="err : ${#fields.errors('username')}" th:text="${err}"></span>
-        </div>
+        <small th:if="${#fields.hasErrors('username')}"
+           th:errors="*{username}"
+               class="invalid-feedback text-danger"></small>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label th:for="email"><b>Email</b></label>
+        <input
+               th:field="*{email}"
+               th:errorclass="'is-invalid'"
+               class="form-control"
+               type="email"
+               placeholder="Enter Email"
+               name="email"
+               id="email"
+               required>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <label th:for="password"><b>Password</b></label>
+        <input
+               th:field="*{password}"
+               th:errorclass="'is-invalid'"
+               class="form-control"
+               type="password"
+               placeholder="Enter Password"
+               name="password"
+               id="password"
+               required>
+        <small th:if="${#fields.hasErrors('password')}"
+        th:errors="*{password}"
+        class="invalid-feedback text-danger"></small>
 
         <label th:for="psw-repeat"><b>Repeat Password</b></label>
         <input
-                th:field="*{password}"
-                th:errorclass="'is-invalid'"
-                type="password"
+               th:field="*{repeatPassword}"
+               th:errorclass="'is-invalid'"
+               class="form-control"
+               type="password"
                placeholder="Repeat Password"
                name="psw-repeat"
                id="psw-repeat"
                required>
+        <small th:if="${#fields.hasErrors('repeatPassword')}"
+        th:errors="*{repeatPassword}"
+        class="invalid-feedback text-danger"
+        style="text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5)"></small>
 
         <label>
             <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
