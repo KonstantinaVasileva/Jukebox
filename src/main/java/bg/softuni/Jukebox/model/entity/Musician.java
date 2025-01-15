@@ -1,27 +1,26 @@
 package bg.softuni.Jukebox.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "musicians")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Musician extends BaseEntity {
+public class Musician {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(nullable = false)
     private String firstName;
     private String lastName;
-    @Column(name = "birth_date")
     private LocalDate birthDate;
-    @Column(name = "deathDate")
     private LocalDate deathDate;
     @ManyToOne
     private Band band;

@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        if (currentUser.isLoggedIn()){
+        if (currentUser.isLoggedIn()) {
             return "redirect:/home";
         }
         return "index";
@@ -24,7 +24,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        if (!currentUser.isLoggedIn()){
+        if (!currentUser.isLoggedIn()) {
             return "redirect:/";
         }
         return "home";

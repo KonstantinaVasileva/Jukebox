@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.model.entity.enums;
+package bg.softuni.Jukebox.model.entity;
 
 public enum GenreType {
     COUNTRY, HIP_HOP, ROCK, EARLY_MUSIC, FOLK_MUSIC, REGGAE, ELECTRONIC, JAZZ, SOUL_MUSIC,

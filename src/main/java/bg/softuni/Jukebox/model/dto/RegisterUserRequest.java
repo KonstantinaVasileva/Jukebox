@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RegisterUserDTO {
+public class RegisterUserRequest {
     @NotBlank
     @Size(min = 3, max = 20, message = "{register.user.username.size}")
     private String username;

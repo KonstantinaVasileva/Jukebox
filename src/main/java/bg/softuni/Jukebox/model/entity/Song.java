@@ -1,19 +1,22 @@
 package bg.softuni.Jukebox.model.entity;
 
-import bg.softuni.Jukebox.model.entity.enums.GenreType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table
 @Getter
 @Setter
 @NoArgsConstructor
-public class Song extends BaseEntity {
+public class Song {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String title;
     private LocalDate releaseDate;
     @Enumerated(EnumType.STRING)

@@ -6,13 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "albums")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Album extends BaseEntity {
+public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(nullable = false)
     private String title;
     private LocalDate releaseDate;
