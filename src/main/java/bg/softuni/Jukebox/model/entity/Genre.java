@@ -5,23 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "bands")
+@Table(name = "genres")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Band {
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false, unique = true)
-    private String name;
-    private LocalDate formed;
+    @Enumerated(EnumType.STRING)
+    private GenreType name;
     private String description;
-    @ManyToMany
-    private Set<Genre> genres;
 }

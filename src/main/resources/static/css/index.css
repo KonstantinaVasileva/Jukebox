@@ -1,0 +1,12 @@
+.introduction {
+    max-width: 550px;
+    margin: -30px 255px 100px 380px;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    text-shadow: .5px .5px black;
+    justify-content: center;
+    padding: 50px;
+    color: white;
+    text-align: center;
+}
