@@ -7,23 +7,19 @@ form {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
+input[type=text], input[type=password], input[type=email] {
+    width: 92%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
+    border-radius: 4px;
     background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
     background-color: #ddd;
     outline: none;
-}
-
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
 }
 
 /* Set a style for all buttons */
@@ -49,9 +45,10 @@ button:hover {
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.cancelbtn, .registerbtn {
     float: left;
     width: 50%;
+    border-radius: 4px;
 }
 
 /* Add padding to container elements */
@@ -71,4 +68,10 @@ button:hover {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
+}
+
+label, h1, p{
+    display: flex;
+    justify-content: center;
+    color: white;
 }

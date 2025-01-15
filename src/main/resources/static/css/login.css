@@ -67,3 +67,9 @@ h1.text-center.mt-2 {
 button{
     align-items: center;
 }
+
+label, h1, p{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
