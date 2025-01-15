@@ -26,13 +26,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ModelAttribute("registerUserDTO")
-    public RegisterUserRequest registerUserDTO() {
+    @ModelAttribute("registerUserRequest")
+    public RegisterUserRequest registerUserRequest() {
         return new RegisterUserRequest();
     }
 
-    @ModelAttribute("loginUserDTO")
-    public LoginUserRequest getLoginUserDTO() {
+    @ModelAttribute("loginUserRequest")
+    public LoginUserRequest getLoginUserRequest() {
         return new LoginUserRequest();
     }
 
