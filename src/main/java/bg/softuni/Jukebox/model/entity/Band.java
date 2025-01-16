@@ -24,4 +24,6 @@ public class Band {
     private String description;
     @ManyToMany
     private Set<Genre> genres;
+    @OneToMany(mappedBy = "band")
+    private Set<Album> albums;
 }

@@ -1,22 +1,46 @@
 <!doctype html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+<link href="css/home.css" rel="stylesheet"/>
     <head th:replace="common::head">
-    <link href="css/home.css" rel="stylesheet"/></head>
+    </head>
 <body>
 <header th:replace="common::header"></header>
 <main class="nav-list-search">
-    <p style="text-align: center">Welcome to Jukebox
+    <p>Welcome to Jukebox
     <br> Are you ready to listen to your music?
     </p>
-    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <input type="text" id="mySearch" onkeyup="searchItems()" placeholder="Search.." title="Type in a category">
 
     <ul id="myMenu">
-        <li><a href="#">GENRE</a></li>
-        <li><a href="#">BANDS</a></li>
-        <li><a href="#">ALBUM</a></li>
-        <li><a href="#">SONG</a></li>
+        <li><a th:href="@{/search/genre}">GENRE</a></li>
+        <li><a th:href="@{/search/band}">BANDS</a></li>
+        <li><a th:href="@{/search/album}">ALBUM</a></li>
+        <li><a th:href="@{/search/song}">SONG</a></li>
     </ul>
 </main>
+<script>
+    function searchItems() {
+        // Get the search query
+        let query = document.getElementById("mySearch").value;
+
+        // Perform an AJAX request to the backend
+        fetch(`/search?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear the existing menu
+                let ul = document.getElementById("myMenu");
+                ul.innerHTML = "";
+
+                // Populate the menu with the new data
+                data.forEach(item => {
+                    let li = document.createElement("li");
+                    li.innerHTML = `<a href="#">${item}</a>`;
+                    ul.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Error fetching search results:", error));
+    }
+</script>
 </body>
 </html>

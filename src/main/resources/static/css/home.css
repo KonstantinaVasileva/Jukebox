@@ -1,11 +1,14 @@
 p{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xxx-large;
     text-align: center;
+    size: 13px;
+    text-shadow: 1px 1px 1px black;
+    color: aquamarine;
 }
 /* Style the search box */
 #mySearch {
-    width: 100%;
-    font-size: 18px;
+    width: 13%;
+    font-size: 10px;
     padding: 11px;
     border: 1px solid #ddd;
 }
@@ -21,10 +24,14 @@ p{
 #myMenu li a {
     padding: 12px;
     text-decoration: none;
-    color: black;
-    display: block
+    color: #339269;
+    display: block;
+    font-size: larger;
+    text-shadow: .5px .5px black;
+    font-weight: bold;
+    max-width: fit-content;
 }
 
 #myMenu li a:hover {
-    background-color: #eee;
+    color: #f6d708;
 }
