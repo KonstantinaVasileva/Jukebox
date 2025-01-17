@@ -19,7 +19,8 @@ public class Genre {
     private UUID id;
     @Enumerated(EnumType.STRING)
     private GenreType name;
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @ManyToMany(mappedBy = "genres")
+    @OneToMany(mappedBy = "genre")
     private List<Band> bands;
 }

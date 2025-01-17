@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -20,10 +19,11 @@ public class Band {
     private UUID id;
     @Column(nullable = false, unique = true)
     private String name;
-    private LocalDate formed;
+    private int formed;
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @ManyToMany
-    private Set<Genre> genres;
+    @ManyToOne
+    private Genre genre;
     @OneToMany(mappedBy = "band")
     private Set<Album> albums;
 }

@@ -1,0 +1,78 @@
+[
+  {
+    "name": "COUNTRY",
+    "description": "Country (also called country and western) is a music genre originating in the southern regions of the United States, both the American South and the Southwest. First produced in the 1920s, country music is primarily focused on singing stories about working-class and blue-collar American life."
+  },
+  {
+    "name": "HIP_HOP",
+    "description": "Hip-hop or hip hop (formerly known as disco rap) is a genre of popular music that emerged in the early 1970s in New York City. The genre is characterized by stylized rhythmic sounds—often built around disco grooves, electronic drum beats, and rapping, a percussive vocal delivery of rhymed poetic speech as consciousness-raising expression"
+  },
+  {
+    "name": "ROCK",
+    "description": "Rock is a broad genre of popular music that originated as \"rock and roll\" in the United States in the late 1940s and early 1950s, developing into a range of different styles from the mid-1960s, particularly in the United States and the United Kingdom."
+  },
+  {
+    "name": "EARLY_MUSIC",
+    "description": "Early music generally comprises Medieval music (500–1400) and Renaissance music (1400–1600), but can also include Baroque music (1600–1750). Originating in Europe, early music is a broad musical era for the beginning of Western classical music."
+  },
+  {
+    "name": "FOLK_MUSIC",
+    "description": "Folk music is a music genre that includes traditional folk music and the contemporary genre that evolved from the former during the 20th-century folk revival. Some types of folk music may be called world music. Traditional folk music has been defined in several ways: as music transmitted orally, music with unknown composers, music that is played on traditional instruments, music about cultural or national identity, music that changes between generations (folk process), music associated with a people's folklore, or music performed by custom over a long period of time. "
+  },
+  {
+    "name": "REGGAE",
+    "description": "Reggae (/ˈrɛɡeɪ/) is a music genre that originated in Jamaica during the late 1960s. The term also denotes the modern popular music of Jamaica and its diaspora. A 1968 single by Toots and the Maytals, \"Do the Reggay\", was the first popular song to use the word reggae, effectively naming the genre and introducing it to a global audience"
+  },
+  {
+    "name": "ELECTRONIC",
+    "description": "Electronic music broadly is a group of music genres that employ electronic musical instruments, circuitry-based music technology and software, or general-purpose electronics (such as personal computers) in its creation. It includes both music made using electronic and electromechanical means (electroacoustic music). Pure electronic instruments depended entirely on circuitry-based sound generation, for instance using devices such as an electronic oscillator, theremin, or synthesizer."
+  },
+  {
+    "name": "JAZZ",
+    "description": "Jazz is a music genre that originated in the African-American communities of New Orleans, Louisiana, in the late 19th and early 20th centuries, with its roots in blues, ragtime, European harmony, African rhythmic rituals, spirituals, hymns, marches, vaudeville song, and dance music. Since the 1920s Jazz Age, it has been recognized as a major form of musical expression in traditional and popular music. Jazz is characterized by swing and blue notes, complex chords, call and response vocals, polyrhythms and improvisation."
+  },
+  {
+    "name": "SOUL_MUSIC",
+    "description": "Soul music is a popular music genre that originated in African-American communities throughout the United States in the late 1950s and early 1960s. It has its roots in African-American gospel music and rhythm and blues. Soul music became popular for dancing and listening, and U.S. record labels such as Motown, Atlantic and Stax were influential in its proliferation during the civil rights movement. Soul also became popular worldwide, directly influencing rock music and the music of Africa. It had a resurgence in the mid-to late 1990s with the subgenre neo soul, which incorporated modern production elements and hip hop influences."
+  },
+  {
+    "name": "BLUES_ROCK",
+    "description": "Blues rock is a fusion genre and form of rock music that relies on the chords/scales and instrumental improvisation of blues. It is mostly an electric ensemble-style music with instrumentation similar to electric blues and rock (electric guitar, electric bass guitar, drums, and sometimes with keyboards and harmonica). From its beginnings in the early to mid-1960s, blues rock has gone through several stylistic shifts and along the way it inspired and influenced hard rock, Southern rock, and early heavy metal"
+  },
+  {
+    "name": "COMPUTER_MUSIC",
+    "description": "Computer music is the application of computing technology in music composition, to help human composers create new music or to have computers independently create music, such as with algorithmic composition programs. It includes the theory and application of new and existing computer software technologies and basic aspects of music, such as sound synthesis, digital signal processing, sound design, sonic diffusion, acoustics, electrical engineering, and psychoacoustics. The field of computer music can trace its roots back to the origins of electronic music, and the first experiments and innovations with electronic instruments at the turn of the 20th century."
+  },
+  {
+    "name": "POP",
+    "description": "Pop music is a genre of popular music that originated in its modern form during the mid-1950s in the United States and the United Kingdom. During the 1950s and 1960s, pop music encompassed rock and roll and the youth-oriented styles it influenced. Rock and pop music remained roughly synonymous until the late 1960s, after which pop became associated with music that was more commercial, ephemeral, and accessible."
+  },
+  {
+    "name": "BLUES",
+    "description": "Blues is a music genre and musical form that originated amongst African-Americans in the Deep South of the United States around the 1860s. Blues has incorporated spirituals, work songs, field hollers, shouts, chants, and rhymed simple narrative ballads from the African-American culture. The blues form is ubiquitous in jazz, rhythm and blues, and rock and roll, and is characterized by the call-and-response pattern, the blues scale, and specific chord progressions, of which the twelve-bar blues is the most common. Blue notes (or \"worried notes\"), usually thirds, fifths or sevenths flattened in pitch, are also an essential part of the sound. Blues shuffles or walking bass reinforce the trance-like rhythm and form a repetitive effect known as the groove."
+  },
+  {
+    "name": "DISCO",
+    "description": "Disco is a genre of dance music and a subculture that emerged in the late 1960s from the United States' urban nightlife scene. Its sound is typified by four-on-the-floor beats, syncopated basslines, string sections, brass and horns, electric piano, synthesizers, and electric rhythm guitars."
+  },
+  {
+    "name": "METAL",
+    "description": "Heavy metal (or simply metal) is a genre of rock music that developed in the late 1960s and early 1970s, largely in the United Kingdom and United States. With roots in blues rock, psychedelic rock and acid rock, heavy metal bands developed a thick, monumental sound characterized by distorted guitars, extended guitar solos, emphatic beats and loudness."
+  },
+  {
+    "name": "R_AND_B",
+    "description": "Rhythm and blues, frequently abbreviated as R&B or R'n'B, is a genre of popular music that originated within the African-American community in the 1940s. The term was originally used by record companies to describe recordings marketed predominantly to African Americans, at a time when \"rocking, jazz based music ... [with a] heavy, insistent beat\" was starting to become more popular. In the commercial rhythm and blues music typical of the 1950s through the 1970s, the bands usually consisted of a piano, one or two guitars, bass, drums, one or more saxophones, and sometimes background vocalists. R&B lyrical themes often encapsulate the African-American history and experience of pain and the quest for freedom and joy, as well as triumphs and failures in terms of societal racism, oppression, relationships, economics, and aspirations."
+  },
+  {
+    "name": "CLASSIC",
+    "description": "Classical music generally refers to the art music of the Western world, considered to be distinct from Western folk music or popular music traditions. It is sometimes distinguished as Western classical music, as the term \"classical music\" can also be applied to non-Western art musics. Classical music is often characterized by formality and complexity in its musical form and harmonic organization, particularly with the use of polyphony. Since at least the ninth century it has been primarily a written tradition, spawning a sophisticated notational system, as well as accompanying literature in analytical, critical, historiographical, musicological and philosophical practices. A foundational component of Western culture, classical music is frequently seen from the perspective of individual or groups of composers, whose compositions, personalities and beliefs have fundamentally shaped its history."
+  },
+  {
+    "name": "GRUNGE",
+    "description": "Grunge (sometimes referred to as the Seattle sound) is an alternative rock genre and subculture which emerged during the mid-1980s in the U.S. state of Washington, particularly in Seattle and nearby towns. Grunge fuses elements of punk rock and heavy metal. The genre featured the distorted electric guitar sound used in both genres, although some bands performed with more emphasis on one or the other. Like these genres, grunge typically uses electric guitar, bass guitar, drums and vocals. Grunge also incorporates influences from indie rock bands such as Sonic Youth. Lyrics are typically angst-filled and introspective, often addressing themes such as social alienation, self-doubt, abuse, neglect, betrayal, social and emotional isolation, addiction, psychological trauma and a desire for freedom"
+  },
+  {
+    "name": "DRUM_AND_BASS",
+    "description": "Drum and bass (commonly abbreviated as DnB, D&B, or D'n'B) is a genre of electronic dance music characterised by fast breakbeats (typically 165–185 beats per minute) with heavy bass and sub-bass lines, samples, and synthesizers. The genre grew out of the UK's jungle scene in the 1990s."
+  }
+]

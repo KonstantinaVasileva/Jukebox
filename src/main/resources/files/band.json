@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Alabama ",
+    "formed": "1969",
+    "description": "Alabama is an American country music band formed in Fort Payne, Alabama, in 1969. The band was founded by Randy Owen (lead vocals, rhythm guitar) and his cousin Teddy Gentry (bass, backing vocals). They were soon joined by another cousin, Jeff Cook (lead guitar, fiddle, and keyboards). First operating under the name Young Country and later Wildcountry, the group toured the Southeast bar circuit in the early 1970s, and began writing original songs. They changed their name to Alabama in 1977 and following the chart success of two singles, were approached by RCA Records for a recording deal.",
+    "genre": "COUNTRY"
+  },
+  {
+    "name": "The Everly Brothers",
+    "formed": "1956",
+    "description": "The Everly Brothers were an American rock duo, known for steel-string acoustic guitar playing and close harmony singing. Consisting of Isaac Donald \"Don\" Everly and Phillip \"Phil\" Everly, the duo combined elements of rock and roll, country, and pop, becoming pioneers of country rock.\n\nDon and Phil Everly were raised in a musical family. As children in the 1940s, they appeared on radio in Iowa singing with their parents as \"The Everly Family\". During their high school years in Knoxville, they performed on radio and television. The brothers gained the attention of Chet Atkins, who began to promote them. They began writing and recording their own music in 1956. The brothers' first hit song was \"Bye Bye Love,\" which hit No. 1 in the spring of 1957. Additional hits, including \"Wake Up Little Susie,\" \"All I Have to Do Is Dream,\" and \"Problems\", would follow through 1958. In 1960, they signed with Warner Bros. Records and recorded \"Cathy's Clown,\" which was their biggest-selling single. The brothers enlisted in the United States Marine Corps Reserve in 1961 and their output dropped off, though additional hit singles continued through 1962. Their final top 10 hit was \"That's Old Fashioned (That's the Way Love Should Be)\".",
+    "genre": "COUNTRY"
+  },
+  {
+    "name": "Wu-Tang Clan",
+    "formed": "1992",
+    "description": "Wu-Tang Clan is an American hip hop musical collective formed in Staten Island, New York City, in 1992. Its members include RZA, GZA, Method Man, Raekwon, Ghostface Killah, Inspectah Deck, U-God, Masta Killa, and, until his death in 2004, Ol' Dirty Bastard. Close affiliate Cappadonna later became an official member. They are credited for revitalizing East Coast hip hop and are considered one of the greatest hip hop groups of all time",
+    "genre": "HIP_HOP"
+  },
+  {
+    "name": "Beastie Boys",
+    "formed": "1981",
+    "description": "Beastie Boys were an American hip hop/rap rock group from New York City, formed in 1981. The group was composed of Adam \"Ad-Rock\" Horovitz (vocals, guitar), Adam \"MCA\" Yauch (vocals, bass), and Michael \"Mike D\" Diamond (vocals, drums, programming). Beastie Boys were formed out of members of experimental hardcore punk band The Young Aborigines, which was formed in 1979, with Diamond on drums, Jeremy Shatan on bass guitar, John Berry on guitar, and Kate Schellenbach later joining on percussion. When Shatan left New York City in mid-1981, Yauch replaced him on bass and the resulting band was named Beastie Boys. Berry left shortly thereafter and was replaced by Horovitz.",
+    "genre": "HIP_HOP"
+  },
+  {
+    "name": "Queen",
+    "formed": "1970",
+    "description": "Queen is a British rock band formed in London, known for their elaborate live performances and diverse musical influences.",
+    "genre": "Rock"
+  },
+  {
+    "name": "The Rolling Stones",
+    "formed": "1962",
+    "description": "The Rolling Stones are an English rock band that became a major part of the British Invasion and are regarded as one of the greatest rock bands of all time.",
+    "genre": "Rock"
+  },
+  {
+    "name": "Anonymous 4",
+    "formed": "1986",
+    "description": "Anonymous 4 was an American vocal ensemble specializing in early music, particularly medieval plainchant and polyphony.",
+    "genre": "EARLY_MUSIC"
+  },
+  {
+    "name": "Simon & Garfunkel",
+    "formed": "1956",
+    "description": "Simon & Garfunkel were an American folk rock duo known for their harmonious vocals and iconic songs like 'The Sound of Silence.'",
+    "genre": "FOLK_MUSIC"
+  },
+  {
+    "name": "Bob Marley and the Wailers",
+    "formed": "1963",
+    "description": "A Jamaican reggae band led by Bob Marley, credited with popularizing reggae music globally.",
+    "genre": "REGGAE"
+  },
+  {
+    "name": "Daft Punk",
+    "formed": "1993",
+    "description": "Daft Punk was a French electronic music duo that revolutionized electronic music with their futuristic sound and iconic robot personas.",
+    "genre": "ELECTRONIC"
+  },
+  {
+    "name": "Miles Davis Quintet",
+    "formed": "1955",
+    "description": "An iconic jazz ensemble led by trumpeter Miles Davis, known for pioneering modern jazz styles.",
+    "genre": "JAZZ"
+  },
+  {
+    "name": "Aretha Franklin",
+    "formed": "1960",
+    "description": "Dubbed the 'Queen of Soul,' Aretha Franklin revolutionized soul music with her powerful vocals and hit songs.",
+    "genre": "SOUL_MUSIC"
+  },
+  {
+    "name": "The Allman Brothers Band",
+    "formed": "1969",
+    "description": "An American band credited with pioneering blues rock with extended improvisations and Southern rock influences.",
+    "genre": "BLUES_ROCK"
+  },
+  {
+    "name": "Aphex Twin",
+    "formed": "1985",
+    "description": "A British electronic musician and composer known for his innovative work in computer-based music and experimental sounds.",
+    "genre": "COMPUTER_MUSIC"
+  },
+  {
+    "name": "The Beatles",
+    "formed": "1960",
+    "description": "An English pop rock band that became the most influential musical group of the 20th century.",
+    "genre": "POP"
+  },
+  {
+    "name": "B.B. King",
+    "formed": "1949",
+    "description": "Known as the 'King of the Blues,' B.B. King was a legendary blues guitarist and singer.",
+    "genre": "BLUES"
+  },
+  {
+    "name": "Bee Gees",
+    "formed": "1958",
+    "description": "The Bee Gees were a musical group known for popularizing disco music with iconic hits like 'Stayin' Alive.'",
+    "genre": "DISCO"
+  },
+  {
+    "name": "Metallica",
+    "formed": "1981",
+    "description": "An American heavy metal band widely regarded as one of the greatest and most influential bands in metal history.",
+    "genre": "METAL"
+  },
+  {
+    "name": "Stevie Wonder",
+    "formed": "1961",
+    "description": "Stevie Wonder is a pioneering R&B artist known for his soulful voice and groundbreaking music.",
+    "genre": "R_AND_B"
+  },
+  {
+    "name": "Ludwig van Beethoven",
+    "formed": "1770",
+    "description": "A German composer and pianist, Beethoven was a crucial figure in the transition between the classical and romantic eras.",
+    "genre": "CLASSIC"
+  },
+  {
+    "name": "Nirvana",
+    "formed": "1987",
+    "description": "An American grunge band that became the face of the grunge movement in the early 1990s.",
+    "genre": "GRUNGE"
+  },
+  {
+    "name": "Pendulum",
+    "formed": "2002",
+    "description": "Pendulum is an Australian drum and bass band known for their high-energy tracks blending rock and electronic music.",
+    "genre": "DRUM_AND_BASS"
+  },
+  {
+    "name": "The Tallis Scholars",
+    "formed": "1973",
+    "description": "A British vocal ensemble specializing in Renaissance polyphony and early music.",
+    "genre": "EARLY_MUSIC"
+  },
+  {
+    "name": "Joan Baez",
+    "formed": "1958",
+    "description": "An American folk singer and activist, known for her distinctive voice and political songs.",
+    "genre": "FOLK_MUSIC"
+  },
+  {
+    "name": "Toots and the Maytals",
+    "formed": "1962",
+    "description": "A Jamaican group that played a pivotal role in popularizing reggae music.",
+    "genre": "REGGAE"
+  },
+  {
+    "name": "The Prodigy",
+    "formed": "1990",
+    "description": "An English electronic music group known for their high-energy and innovative tracks.",
+    "genre": "ELECTRONIC"
+  },
+  {
+    "name": "John Coltrane Quartet",
+    "formed": "1960",
+    "description": "A legendary jazz group led by saxophonist John Coltrane, known for their influential and experimental work.",
+    "genre": "JAZZ"
+  },
+  {
+    "name": "Otis Redding",
+    "formed": "1958",
+    "description": "An American soul singer and songwriter, known for his powerful performances and iconic hits like 'Sittin' on the Dock of the Bay.'",
+    "genre": "SOUL_MUSIC"
+  },
+  {
+    "name": "Cream",
+    "formed": "1966",
+    "description": "A British rock band that fused blues and rock, featuring Eric Clapton as the guitarist.",
+    "genre": "BLUES_ROCK"
+  },
+  {
+    "name": "Kraftwerk",
+    "formed": "1970",
+    "description": "A German electronic band often regarded as pioneers of computer music and electronic soundscapes.",
+    "genre": "COMPUTER_MUSIC"
+  },
+  {
+    "name": "ABBA",
+    "formed": "1972",
+    "description": "A Swedish pop group known for their catchy melodies and global hits like 'Dancing Queen.'",
+    "genre": "POP"
+  },
+  {
+    "name": "Muddy Waters",
+    "formed": "1941",
+    "description": "An American blues musician often called the 'Father of Modern Chicago Blues.'",
+    "genre": "BLUES"
+  },
+  {
+    "name": "Donna Summer",
+    "formed": "1970",
+    "description": "An American singer widely regarded as the 'Queen of Disco' with hits like 'Hot Stuff.'",
+    "genre": "DISCO"
+  },
+  {
+    "name": "Black Sabbath",
+    "formed": "1968",
+    "description": "A British heavy metal band often credited as pioneers of the genre.",
+    "genre": "METAL"
+  },
+  {
+    "name": "Marvin Gaye",
+    "formed": "1961",
+    "description": "An iconic R&B singer known for his soulful voice and socially conscious songs like 'What's Going On.'",
+    "genre": "R_AND_B"
+  },
+  {
+    "name": "Wolfgang Amadeus Mozart",
+    "formed": "1756",
+    "description": "A prolific and influential classical composer of the 18th century.",
+    "genre": "CLASSIC"
+  },
+  {
+    "name": "Soundgarden",
+    "formed": "1984",
+    "description": "An American grunge band that played a key role in the Seattle grunge movement.",
+    "genre": "GRUNGE"
+  },
+  {
+    "name": "Chase & Status",
+    "formed": "2003",
+    "description": "A British electronic music duo known for their innovative drum and bass tracks.",
+    "genre": "DRUM_AND_BASS"
+  },
+  {
+    "name": "",
+    "formed": "",
+    "description": "",
+    "genre": ""
+  }
+]
