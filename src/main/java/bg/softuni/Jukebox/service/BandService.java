@@ -6,6 +6,7 @@ import bg.softuni.Jukebox.repository.BandRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BandService {
@@ -16,11 +17,11 @@ public class BandService {
         this.bandRepository = bandRepository;
     }
 
-    public List<Album> findBandByName(String name) {
-        Band band = bandRepository.findByName(name).get();
-        if (band==null) {
+    public List<Album> findAlbumsByBandName(String name) {
+        Optional<Band> band = bandRepository.findByName(name);
+        if (band.isEmpty()) {
             //TODO
         }
-        return band.getAlbums().stream().toList();
+        return band.get().getAlbums().stream().toList();
     }
 }

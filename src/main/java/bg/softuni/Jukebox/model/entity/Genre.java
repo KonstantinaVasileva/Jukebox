@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,4 +20,6 @@ public class Genre {
     @Enumerated(EnumType.STRING)
     private GenreType name;
     private String description;
+    @ManyToMany(mappedBy = "genres")
+    private List<Band> bands;
 }
