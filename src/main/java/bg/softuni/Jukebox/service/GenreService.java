@@ -47,4 +47,8 @@ public class GenreService {
 
         return genre.get().getBands();
     }
+
+    public Genre findGenreByName(String name) {
+        return genreRepository.findByName(GenreType.valueOf(name)).get();
+    }
 }
