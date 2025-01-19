@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/serch")
 public class SearchController {
     private final GenreService genreService;
     private final BandService bandService;
@@ -60,25 +61,27 @@ public class SearchController {
 @GetMapping
 public List<String> search(@RequestParam String query, @RequestParam String category) {
     query = query.toUpperCase();
-    return switch (category.toLowerCase()) {
-        case "genre" -> genreService.findBandByGenre(query)
+    List<String> result;
+     switch (category.toLowerCase()) {
+        case "genre" -> result=genreService.findBandByGenre(query)
                 .stream()
                 .map(Band::getName)
                 .toList();
-        case "bands" -> bandService.findAlbumsByBandName(query)
+        case "bands" -> result=bandService.findAlbumsByBandName(query)
                 .stream()
                 .map(Album::getTitle)
                 .toList();
-        case "album" -> albumService.findAlbumByTitle(query)
+        case "album" -> result=albumService.findAlbumByTitle(query)
                 .stream()
                 .map(Album::getTitle)
                 .toList();
-        case "song" -> songService.findSongByTitle(query)
+        case "song" -> result=songService.findSongByTitle(query)
                 .stream()
                 .map(Song::getTitle)
                 .toList();
-        default -> List.of(); // Return an empty list for invalid categories
-    };
+        default -> result=null; // Return an empty list for invalid categories
+    }
+     return result;
 }
 
 }
