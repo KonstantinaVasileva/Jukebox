@@ -10,37 +10,55 @@
     <p>Welcome to Jukebox
     <br> Are you ready to listen to your music?
     </p>
-    <input type="text" id="mySearch" onkeyup="searchItems()" placeholder="Search.." title="Type in a category">
+        <section>
+            <input type="text" id="searchQuery" placeholder="Enter your search..." />
+            <select id="category">
+                <option value="genre">Genre</option>
+                <option value="band">Band</option>
+                <option value="album">Album</option>
+                <option value="song">Song</option>
+            </select>
+            <button onclick="search()">Search</button>
+        </section>
+        <ul id="results">
+            <!-- Search results will be dynamically added here -->
+        </ul>
+    </main>
+    <script>
+        function search() {
+            const query = document.getElementById("searchQuery").value;
+            const category = document.getElementById("category").value;
 
-    <ul id="myMenu">
-        <li><a th:href="@{/search/genre}">GENRE</a></li>
-        <li><a th:href="@{/search/band}">BANDS</a></li>
-        <li><a th:href="@{/search/album}">ALBUM</a></li>
-        <li><a th:href="@{/search/song}">SONG</a></li>
-    </ul>
-</main>
-<script>
-    function searchItems() {
-        // Get the search query
-        let query = document.getElementById("mySearch").value;
+            if (!query) {
+                alert("Please enter a search query!");
+                return;
+            }
 
-        // Perform an AJAX request to the backend
-        fetch(`/search?query=${encodeURIComponent(query)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Clear the existing menu
-                let ul = document.getElementById("myMenu");
-                ul.innerHTML = "";
+            fetch(`/search?query=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error fetching search results");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const resultsList = document.getElementById("results");
+                    resultsList.innerHTML = ""; // Clear previous results
 
-                // Populate the menu with the new data
-                data.forEach(item => {
-                    let li = document.createElement("li");
-                    li.innerHTML = `<a href="#">${item}</a>`;
-                    ul.appendChild(li);
-                });
-            })
-            .catch(error => console.error("Error fetching search results:", error));
-    }
-</script>
+                    if (data.length === 0) {
+                        resultsList.innerHTML = "<li>No results found</li>";
+                        return;
+                    }
+
+                    data.forEach(item => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `<a href="/details/${item.id}">${item.name}</a>`;
+                        resultsList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+
 </body>
 </html>
