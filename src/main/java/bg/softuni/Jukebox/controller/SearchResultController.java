@@ -1,6 +1,6 @@
 //package bg.softuni.Jukebox.controller;
 //
-//import bg.softuni.Jukebox.model.dto.SearchRequest;
+//import bg.softuni.Jukebox.model.dto.SearchResult;
 //import bg.softuni.Jukebox.model.entity.Album;
 //import bg.softuni.Jukebox.model.entity.Band;
 //import bg.softuni.Jukebox.model.entity.Song;
@@ -32,12 +32,12 @@
 //    }
 //
 //    @ModelAttribute("searchRequest")
-//    public SearchRequest searchRequest() {
-//        return new SearchRequest();
+//    public SearchResult searchRequest() {
+//        return new SearchResult();
 //    }
 //
 //    @GetMapping("/genre")
-//    public String genre(SearchRequest searchRequest,
+//    public String genre(SearchResult searchRequest,
 //                        Model model) {
 //        List<Band> bandByGenre = genreService.findBandByGenre(searchRequest.getTitle());
 //        model.addAttribute("bands", bandByGenre);
@@ -45,15 +45,15 @@
 //    }
 //
 //    @GetMapping("/bands")
-//    public String bands(SearchRequest searchRequest,
+//    public String bands(SearchResult searchRequest,
 //                             Model model) {
-//        List<Album> albumsByBandName = bandService.findAlbumsByBandName(searchRequest.getTitle());
+//        List<Album> albumsByBandName = bandService.findBandByName(searchRequest.getTitle());
 //        model.addAttribute("albums", albumsByBandName);
 //        return "redirect:/albums";
 //    }
 //
 //    @GetMapping("/album")
-//    public String albums(SearchRequest searchRequest,
+//    public String albums(SearchResult searchRequest,
 //                         Model model) {
 //        List<Album> albumByTitle = albumService.findAlbumByTitle(searchRequest.getTitle());
 //        model.addAttribute("albums", albumByTitle);
@@ -61,7 +61,7 @@
 //    }
 //
 //    @GetMapping("/song")
-//    public String songs(SearchRequest searchRequest,
+//    public String songs(SearchResult searchRequest,
 //                        Model model) {
 //        List<Song> songByTitle = songService.findSongByTitle(searchRequest.getTitle());
 //        model.addAttribute("songs", songByTitle);

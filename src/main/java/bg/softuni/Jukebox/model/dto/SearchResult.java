@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SearchRequest {
+public class SearchResult {
     private String title;
 }

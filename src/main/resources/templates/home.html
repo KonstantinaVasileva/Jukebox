@@ -23,6 +23,9 @@
         <ul id="results">
             <!-- Search results will be dynamically added here -->
         </ul>
+    <section id="details">
+
+    </section>
     </main>
     <script>
         function search() {
@@ -52,12 +55,40 @@
 
                     data.forEach(item => {
                         const li = document.createElement("li");
-                        li.innerHTML = `<a href="/details/${item.id}">${item.name}</a>`;
+                        const link = document.createElement("a");
+
+                        link.textContent = item;
+                        link.href = `/details/${encodeURIComponent(item)}`;
+
+                        li.appendChild(link);
+
                         resultsList.appendChild(li);
                     });
                 })
                 .catch(error => console.error(error));
         }
+
+        function fetchDetails(itemId) {
+            fetch(`/details/${encodeURIComponent(itemId)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error fetching details");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Select the element where you want to display details
+                    const detailsSection = document.getElementById("details");
+                    detailsSection.innerHTML = `
+                <h2>${data.name}</h2>
+                <p><strong>Formed:</strong> ${data.formed}</p>
+                <p><strong>Genre:</strong> ${data.genre}</p>
+                <p><strong>Description:</strong> ${data.description}</p>
+            `;
+                })
+                .catch(error => console.error("Error fetching details:", error));
+        }
+
     </script>
 
 </body>

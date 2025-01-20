@@ -2,7 +2,6 @@ package bg.softuni.Jukebox.controller;
 
 import bg.softuni.Jukebox.model.entity.Album;
 import bg.softuni.Jukebox.model.entity.Band;
-import bg.softuni.Jukebox.model.entity.Genre;
 import bg.softuni.Jukebox.model.entity.Song;
 import bg.softuni.Jukebox.service.AlbumService;
 import bg.softuni.Jukebox.service.BandService;
@@ -13,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/serch")
+@RequestMapping("/search")
 public class SearchController {
     private final GenreService genreService;
     private final BandService bandService;
@@ -60,16 +58,15 @@ public class SearchController {
 
 @GetMapping
 public List<String> search(@RequestParam String query, @RequestParam String category) {
-    query = query.toUpperCase();
     List<String> result;
      switch (category.toLowerCase()) {
         case "genre" -> result=genreService.findBandByGenre(query)
                 .stream()
                 .map(Band::getName)
                 .toList();
-        case "bands" -> result=bandService.findAlbumsByBandName(query)
+        case "bands" -> result=bandService.findBandByName(query)
                 .stream()
-                .map(Album::getTitle)
+                .map(Band::getName)
                 .toList();
         case "album" -> result=albumService.findAlbumByTitle(query)
                 .stream()
@@ -79,7 +76,7 @@ public List<String> search(@RequestParam String query, @RequestParam String cate
                 .stream()
                 .map(Song::getTitle)
                 .toList();
-        default -> result=null; // Return an empty list for invalid categories
+        default -> throw new IllegalArgumentException("Invalid category: " + category); // Return an empty list for invalid categories
     }
      return result;
 }
