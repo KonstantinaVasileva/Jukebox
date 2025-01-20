@@ -41,7 +41,7 @@ public class BandService {
     }
 
     public List<Band> findBandByName(String name) {
-        List<Band> band = bandRepository.findByName(name);
+        List<Band> band = bandRepository.findByNameContainingIgnoreCase(name);
         if (band.isEmpty()) {
             //TODO
         }

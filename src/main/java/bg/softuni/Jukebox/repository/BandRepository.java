@@ -11,5 +11,7 @@ import java.util.UUID;
 public interface BandRepository extends JpaRepository<Band, UUID> {
 
     List<Band> findByName(String name);
+
+    List<Band> findByNameContainingIgnoreCase(String name);
 }
 

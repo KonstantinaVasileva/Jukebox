@@ -16,6 +16,6 @@ public class SongService {
     }
 
     public List<Song> findSongByTitle(String title) {
-        return songRepository.getSongsByTitle(title);
+        return songRepository.findByTitleContainingIgnoreCase(title);
     }
 }

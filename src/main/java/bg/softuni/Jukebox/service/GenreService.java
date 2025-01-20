@@ -40,15 +40,14 @@ public class GenreService {
     }
 
     public List<Band> findBandByGenre(String title) {
-        Optional<Genre> genre = genreRepository.findByName(GenreType.valueOf(title));
-        if (genre.isEmpty()) {
-            //TODO Exceptions
-        }
-
-        return genre.get().getBands();
+        return findGenreByName(title.toUpperCase()).getBands();
     }
 
     public Genre findGenreByName(String name) {
-        return genreRepository.findByName(GenreType.valueOf(name)).get();
+        Optional<Genre> genre = genreRepository.findByName(GenreType.valueOf(name));
+        if (genre.isEmpty()) {
+            //TODO Exceptions
+        }
+        return genre.get();
     }
 }
