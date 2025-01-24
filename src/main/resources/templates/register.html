@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"
-xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <link href="/css/register.css" rel="stylesheet"/>
 <head th:replace="common::head">
 </head>
@@ -22,60 +22,81 @@ xmlns:th="http://www.thymeleaf.org">
                 id="username"
                 required>
         <small th:if="${#fields.hasErrors('username')}"
-           th:errors="*{username}"
+               th:errors="*{username}"
                class="invalid-feedback text-danger"></small>
 
         <label th:for="email"><b>Email</b></label>
         <input
-               th:field="*{email}"
-               th:errorclass="'is-invalid'"
-               class="form-control"
-               type="email"
-               placeholder="Enter Email"
-               name="email"
-               id="email"
-               required>
+                th:field="*{email}"
+                th:errorclass="'is-invalid'"
+                class="form-control"
+                type="email"
+                placeholder="Enter Email"
+                name="email"
+                id="email"
+                required>
 
         <label th:for="password"><b>Password</b></label>
         <input
-               th:field="*{password}"
-               th:errorclass="'is-invalid'"
-               class="form-control"
-               type="password"
-               placeholder="Enter Password"
-               name="password"
-               id="password"
-               required>
+                th:field="*{password}"
+                th:errorclass="'is-invalid'"
+                class="form-control"
+                type="password"
+                placeholder="Enter Password"
+                name="password"
+                id="password"
+                required>
         <small th:if="${#fields.hasErrors('password')}"
-        th:errors="*{password}"
-        class="invalid-feedback text-danger"></small>
+               th:errors="*{password}"
+               class="invalid-feedback text-danger"></small>
 
         <label th:for="psw-repeat"><b>Repeat Password</b></label>
         <input
-               th:field="*{repeatPassword}"
-               th:errorclass="'is-invalid'"
-               class="form-control"
-               type="password"
-               placeholder="Repeat Password"
-               name="psw-repeat"
-               id="psw-repeat"
-               required>
+                th:field="*{repeatPassword}"
+                th:errorclass="'is-invalid'"
+                class="form-control"
+                type="password"
+                placeholder="Repeat Password"
+                name="psw-repeat"
+                id="psw-repeat"
+                required>
         <small th:if="${#fields.hasErrors('repeatPassword')}"
-        th:errors="*{repeatPassword}"
-        class="invalid-feedback text-danger"></small>
+               th:errors="*{repeatPassword}"
+               class="invalid-feedback text-danger"></small>
 
-<!--        <label>-->
-<!--            <input type="checkbox" checked="checked" name="remember"> Remember me-->
-<!--        </label>-->
-
-        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
+        <!--        <label>-->
+        <!--            <input type="checkbox" checked="checked" name="remember"> Remember me-->
+        <!--        </label>-->
+        <label>
+            <input type="checkbox" id="agree" onchange="toggleRegisterButton()">
+            <p>
+                By creating an account you agree to our
+                <a th:href="@{/register/TermsAndPrivacy}" style="color:dodgerblue">
+                    Terms & Privacy
+                </a>.
+            </p>
+        </label>
         <div class="clearfix">
             <button type="button" class="cancelbtn">
-                <a th:href="@{/}">Cancel</a>
+                <a th:href="@{/}" style="text-decoration: none; color: white;">Cancel</a>
             </button>
-            <button type="submit" class="registerbtn" >Register</button>
+            <button type="submit" id="registerBtn" class="registerbtn" disabled>
+                Register
+            </button>
         </div>
+        <script>
+            function toggleRegisterButton() {
+                const checkbox = document.getElementById("agree");
+                const registerBtn = document.getElementById("registerBtn");
+
+                if (checkbox.checked) {
+                    registerBtn.disabled = false;
+                } else {
+                    registerBtn.disabled = true;
+                }
+            }
+        </script>
+
     </div>
 </form>
 </body>

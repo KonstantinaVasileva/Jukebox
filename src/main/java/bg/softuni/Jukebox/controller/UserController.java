@@ -91,12 +91,6 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        currentUser.logout();
-        return "redirect:/";
-    }
-
     @PostMapping("/login")
     public String login(LoginUserRequest loginUserRequest,
                         RedirectAttributes redirectAttributes) {
@@ -110,5 +104,16 @@ public class UserController {
         currentUser.login(loginUserRequest.getUsername());
 
         return "redirect:/home";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        currentUser.logout();
+        return "redirect:/";
+    }
+
+    @GetMapping("/register/TermsAndPrivacy")
+    public String TermsAndConditions() {
+        return "TermsAndConditions";
     }
 }
