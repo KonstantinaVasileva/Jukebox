@@ -36,13 +36,14 @@ public class SearchController {
 //                .filter(item -> item.toLowerCase().contains(query.toLowerCase()))
 //                .toString();
 //
-////        return switch (query.toLowerCase()) {
-////            case "genre" -> "redirect:/search/genre";
-////            case "bands" -> "redirect:/search/bands";
-////            case "album" -> "redirect:/search/albums";
-////            case "song" -> "redirect:/search/songs";
-////            default -> "redirect:/home";
-////        };
+
+    /// /        return switch (query.toLowerCase()) {
+    /// /            case "genre" -> "redirect:/search/genre";
+    /// /            case "bands" -> "redirect:/search/bands";
+    /// /            case "album" -> "redirect:/search/albums";
+    /// /            case "song" -> "redirect:/search/songs";
+    /// /            default -> "redirect:/home";
+    /// /        };
 //    }
 
 // @GetMapping
@@ -55,30 +56,30 @@ public class SearchController {
 //            default -> List.of(); // Empty list for unknown category
 //        };
 //    }
-
-@GetMapping
-public List<String> search(@RequestParam String query, @RequestParam String category) {
-    List<String> result;
-     switch (category.toLowerCase()) {
-        case "genre" -> result=genreService.findBandByGenre(query)
-                .stream()
-                .map(Band::getName)
-                .toList();
-        case "bands" -> result=bandService.findBandByName(query)
-                .stream()
-                .map(Band::getName)
-                .toList();
-        case "album" -> result=albumService.findAlbumByTitle(query)
-                .stream()
-                .map(Album::getTitle)
-                .toList();
-        case "song" -> result=songService.findSongByTitle(query)
-                .stream()
-                .map(Song::getTitle)
-                .toList();
-        default -> throw new IllegalArgumentException("Invalid category: " + category); // Return an empty list for invalid categories
+    @GetMapping
+    public List<String> search(@RequestParam String query, @RequestParam String category) {
+        List<String> result;
+        switch (category.toLowerCase()) {
+            case "genre" -> result = genreService.findBandByGenre(query)
+                    .stream()
+                    .map(Band::getName)
+                    .toList();
+            case "bands" -> result = bandService.findBandByName(query)
+                    .stream()
+                    .map(Band::getName)
+                    .toList();
+            case "album" -> result = albumService.findAlbumByTitle(query)
+                    .stream()
+                    .map(Album::getTitle)
+                    .toList();
+            case "song" -> result = songService.findSongByTitle(query)
+                    .stream()
+                    .map(Song::getTitle)
+                    .toList();
+            default ->
+                    throw new IllegalArgumentException("Invalid category: " + category); // Return an empty list for invalid categories
+        }
+        return result;
     }
-     return result;
-}
 
 }

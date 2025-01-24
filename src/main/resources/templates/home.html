@@ -2,93 +2,67 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <link href="css/home.css" rel="stylesheet"/>
-    <head th:replace="~{common::head}">
-    </head>
+<head th:replace="~{common::head}">
+</head>
 <body>
 <header th:replace="~{common::header}"></header>
 <main class="nav-list-search">
     <p>Welcome to Jukebox
-    <br> Are you ready to listen to your music?
+        <br> Are you ready to listen to your music?
     </p>
-        <section>
-            <input type="text" id="searchQuery" placeholder="Enter your search..." />
-            <select id="category">
-                <option value="genre">Genre</option>
-                <option value="band">Band</option>
-                <option value="album">Album</option>
-                <option value="song">Song</option>
-            </select>
-            <button onclick="search()">Search</button>
-        </section>
-        <ul id="results">
-            <!-- Search results will be dynamically added here -->
-        </ul>
+    <section>
+        <input type="text" id="searchQuery" placeholder="Enter your search..."/>
+        <select id="category">
+            <option value="genre">Genre</option>
+            <option value="band">Band</option>
+            <option value="album">Album</option>
+            <option value="song">Song</option>
+        </select>
+        <button onclick="search()">Search</button>
+    </section>
+    <ul id="results">
+        <!-- Search results will be dynamically added here -->
+    </ul>
     <section id="details">
 
     </section>
-    </main>
-    <script>
-        function search() {
-            const query = document.getElementById("searchQuery").value;
-            const category = document.getElementById("category").value;
+</main>
+<script>
+    function search() {
+        const query = document.getElementById("searchQuery").value;
+        const category = document.getElementById("category").value;
 
-            if (!query) {
-                alert("Please enter a search query!");
-                return;
-            }
-
-            fetch(`/search?query=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Error fetching search results");
-                    }
-                    return response.json();  // Expecting a list of strings here
-                })
-                .then(data => {
-                    const resultsList = document.getElementById("results");
-                    resultsList.innerHTML = "";  // Clear previous results
-
-                    if (data.length === 0) {
-                        resultsList.innerHTML = "<li>No results found</li>";
-                        return;
-                    }
-
-                    data.forEach(item => {
-                        const li = document.createElement("li");
-                        li.innerHTML = `<a href="#" data-id="${item.id}">${item.name}</a>`;  // Assuming `item` has `id` and `name`
-                        resultsList.appendChild(li);
-                    });
-
-                    // Add event listener to each search result
-                    const links = document.querySelectorAll("#results a");
-                    links.forEach(link => {
-                        link.addEventListener("click", function(event) {
-                            event.preventDefault();
-                            const itemId = this.getAttribute("data-id");
-                            showDetails(itemId);
-                        });
-                    });
-                })
-                .catch(error => console.error("Error fetching search results:", error));
+        if (!query) {
+            alert("Please enter a search query!");
+            return;
         }
 
-        function showDetails(itemId) {
-            fetch(`/details/${itemId}`)  // Fetch details from the backend
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Error fetching details");
-                    }
-                    return response.json();
-                })
-                .then(details => {
-                    alert(`Details for item ${itemId}:\nName: ${details.name}\nOther info: ${details.otherInfo}`);  // Display details in an alert for now
-                })
-                .catch(error => console.error("Error fetching details:", error));
-        }
+        fetch(`/search?query=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error fetching search results");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const resultsList = document.getElementById("results");
+                resultsList.innerHTML = "";  // Clear previous results
 
+                if (data.length === 0) {
+                    resultsList.innerHTML = "<li>No results found</li>";
+                    return;
+                }
 
+                data.forEach(item => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<a href="#">${item.name || item.title || item}</a>`;  // Adjust depending on the field in the response
+                    resultsList.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Error fetching search results:", error));
+    }
 
-    </script>
+</script>
 
 </body>
 </html>
