@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BandService {
@@ -40,11 +41,19 @@ public class BandService {
         }
     }
 
-    public List<Band> findBandByName(String name) {
+    public List<Band> findBandBySearch(String name) {
         List<Band> band = bandRepository.findByNameContainingIgnoreCase(name);
         if (band.isEmpty()) {
             //TODO
         }
         return band;
+    }
+
+    public boolean existsById(UUID id) {
+        return bandRepository.existsById(id);
+    }
+
+    public Object findById(UUID id) {
+        return bandRepository.findById(id).orElse(null);
     }
 }

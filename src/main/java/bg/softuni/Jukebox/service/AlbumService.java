@@ -4,6 +4,7 @@ import bg.softuni.Jukebox.model.entity.Album;
 import bg.softuni.Jukebox.repository.AlbumRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AlbumService {
@@ -13,7 +14,7 @@ public class AlbumService {
         this.albumRepository = albumRepository;
     }
 
-    public List<Album> findAlbumByTitle(String title) {
+    public List<Album> findAlbumBySearch(String title) {
         List<Album> albums = albumRepository.findByTitleContainingIgnoreCase(title);
         if (albums.isEmpty()) {
             //TODO EXCEPTION
@@ -21,4 +22,12 @@ public class AlbumService {
         return albums;
     }
 
+
+    public boolean existsById(UUID id) {
+        return albumRepository.existsById(id);
+    }
+
+    public Object findById(UUID id) {
+        return albumRepository.findById(id).orElse(null);
+    }
 }

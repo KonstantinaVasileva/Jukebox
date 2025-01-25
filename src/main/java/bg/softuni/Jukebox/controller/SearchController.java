@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/search")
@@ -57,29 +58,27 @@ public class SearchController {
 //        };
 //    }
     @GetMapping
-    public List<String> search(@RequestParam String query, @RequestParam String category) {
-        List<String> result;
+    public List<?> search(@RequestParam String query, @RequestParam String category) {
+        List<?> result;
         switch (category.toLowerCase()) {
-            case "genre" -> result = genreService.findBandByGenre(query)
-                    .stream()
-                    .map(Band::getName)
-                    .toList();
-            case "bands" -> result = bandService.findBandByName(query)
-                    .stream()
-                    .map(Band::getName)
-                    .toList();
-            case "album" -> result = albumService.findAlbumByTitle(query)
-                    .stream()
-                    .map(Album::getTitle)
-                    .toList();
-            case "song" -> result = songService.findSongByTitle(query)
-                    .stream()
-                    .map(Song::getTitle)
-                    .toList();
-            default ->
-                    throw new IllegalArgumentException("Invalid category: " + category); // Return an empty list for invalid categories
+            case "genre" -> result = genreService.findBandByGenre(query);
+            case "bands" -> result = bandService.findBandBySearch(query);
+            case "album" -> result = albumService.findAlbumBySearch(query);
+            case "song" -> result = songService.findSongByTitle(query);
+            default -> throw new IllegalArgumentException("Invalid category: " + category);
         }
-        return result;
+
+        return result.stream().map(item -> {
+            if (item instanceof Band band) {
+                return Map.of("id", band.getId(), "name", band.getName());
+            } else if (item instanceof Album album) {
+                return Map.of("id", album.getId(), "name", album.getTitle());
+            } else if (item instanceof Song song) {
+                return Map.of("id", song.getId(), "name", song.getTitle());
+            } else {
+                throw new IllegalStateException("Unexpected object type: " + item.getClass().getSimpleName());
+            }
+        }).toList();
     }
 
 }
