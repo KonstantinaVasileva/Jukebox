@@ -53,7 +53,7 @@ public class BandService {
         return bandRepository.existsById(id);
     }
 
-    public Object findById(UUID id) {
+    public Band findById(UUID id) {
         return bandRepository.findById(id).orElse(null);
     }
 }

@@ -22,6 +22,7 @@ public class Band {
     private int formed;
     @Column(columnDefinition = "TEXT")
     private String description;
+    private String image;
     @ManyToOne
     private Genre genre;
     @OneToMany(mappedBy = "band")

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/details.css">
+<head th:replace="~{common::head}">
+
+</head>
+<body th:style="|background-image: url('${band.image}');|">
+<header>
+</header>
+
+<main class="details-container">
+    <section>
+        <h2 th:text="'Band: ' + ${band.name}"></h2>
+        <p><strong>Formed:</strong> <span th:text="${band.formed}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${band.description}"></span></p>
+        <p><strong>Genre:</strong> <span th:text="${band.genre.name}"></span></p>
+        <p><strong>Albums:</strong>
+            <th:block th:each="album:${band.albums}"><span th:text="album.title"></span></th:block>
+        </p>
+    </section>
+
+    <!--    <section th:if="${album != null}">-->
+    <!--        <h2 th:text="'Album: ' + ${album.title}"></h2>-->
+    <!--        <p><strong>Released:</strong> <span th:text="${album.releaseYear}"></span></p>-->
+    <!--        <p><strong>Band:</strong> <span th:text="${album.band.name}"></span></p>-->
+    <!--    </section>-->
+
+    <!--    <section th:if="${song != null}">-->
+    <!--        <h2 th:text="'Song: ' + ${song.title}"></h2>-->
+    <!--        <p><strong>Duration:</strong> <span th:text="${song.duration}"></span></p>-->
+    <!--        <p><strong>Album:</strong> <span th:text="${song.album.title}"></span></p>-->
+    <!--        <p><strong>Band:</strong> <span th:text="${song.album.band.name}"></span></p>-->
+    <!--    </section>-->
+
+    <section th:if="${band == null && album == null && song == null}">
+        <p>No details available.</p>
+    </section>
+</main>
+</body>
+</html>

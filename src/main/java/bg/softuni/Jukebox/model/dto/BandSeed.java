@@ -14,5 +14,7 @@ public class BandSeed {
     @Expose
     private String description;
     @Expose
+    private String image;
+    @Expose
     private String genre;
 }

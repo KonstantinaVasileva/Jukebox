@@ -24,7 +24,7 @@ public class SongService {
         return songRepository.existsById(id);
     }
 
-    public Object findById(UUID id) {
+    public Song findById(UUID id) {
         return songRepository.findById(id).orElse(null);
     }
 }

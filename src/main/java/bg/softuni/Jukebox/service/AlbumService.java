@@ -27,7 +27,7 @@ public class AlbumService {
         return albumRepository.existsById(id);
     }
 
-    public Object findById(UUID id) {
+    public Album findById(UUID id) {
         return albumRepository.findById(id).orElse(null);
     }
 }
