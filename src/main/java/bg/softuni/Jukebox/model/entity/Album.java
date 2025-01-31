@@ -1,27 +1,27 @@
 package bg.softuni.Jukebox.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Table(name = "albums")
-@Getter
-@Setter
 @NoArgsConstructor
+@Data
+@Builder
+@AllArgsConstructor
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
     private String title;
-    private LocalDate releaseDate;
+    private int releaseDate;
     private String description;
     @ManyToOne
     @JoinColumn(nullable = false)
     private Band band;
+
+
 }

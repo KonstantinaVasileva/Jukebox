@@ -15,7 +15,9 @@
         <p><strong>Description:</strong> <span th:text="${band.description}"></span></p>
         <p><strong>Genre:</strong> <span th:text="${band.genre.name}"></span></p>
         <p><strong>Albums:</strong>
-            <th:block th:each="album:${band.albums}"><span th:text="album.title"></span></th:block>
+        <ul th:each="album : ${band.albums}">
+            <li th:text="${album.title}"></li>
+        </ul>
         </p>
     </section>
 

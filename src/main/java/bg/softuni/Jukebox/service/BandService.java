@@ -56,4 +56,8 @@ public class BandService {
     public Band findById(UUID id) {
         return bandRepository.findById(id).orElse(null);
     }
+
+    public Band findByName(String name) {
+        return bandRepository.findByName(name);
+    }
 }
