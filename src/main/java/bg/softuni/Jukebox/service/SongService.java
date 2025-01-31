@@ -13,10 +13,12 @@ public class SongService {
 
     private final SongRepository songRepository;
     private final AlbumService albumService;
+    private final BandService bandService;
 
-    public SongService(SongRepository songRepository, AlbumService albumService) {
+    public SongService(SongRepository songRepository, AlbumService albumService, BandService bandService) {
         this.songRepository = songRepository;
         this.albumService = albumService;
+        this.bandService = bandService;
     }
 
     public List<Song> findSongByTitle(String title) {
@@ -36,11 +38,13 @@ public class SongService {
             List<Song> songs = new ArrayList<>();
             songs.add(Song.builder()
                     .title("Mountain Music")
-                    .album(albumService.findAlbumByTitleAndBand("Mountain Music","Alabama"))
+                    .album(albumService.findAlbumByTitleAndBand("Mountain Music", "Alabama"))
+                    .band(bandService.findByName("Alabama"))
                     .build());
             songs.add(Song.builder()
                     .title("Close Enough to Perfect ")
-                    .album(albumService.findAlbumByTitleAndBand("Mountain Music","Alabama"))
+                    .album(albumService.findAlbumByTitleAndBand("Mountain Music", "Alabama"))
+                    .band(bandService.findByName("Alabama"))
                     .build());
             songRepository.saveAll(songs);
         }
