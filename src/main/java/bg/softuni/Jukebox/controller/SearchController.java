@@ -30,33 +30,6 @@ public class SearchController {
         this.songService = songService;
     }
 
-//    @GetMapping
-//    public String search(@RequestParam String query) {
-//        List<String> items =  List.of("GENRE", "BANDS", "ALBUM", "SONG");
-//        return items.stream()
-//                .filter(item -> item.toLowerCase().contains(query.toLowerCase()))
-//                .toString();
-//
-
-    /// /        return switch (query.toLowerCase()) {
-    /// /            case "genre" -> "redirect:/search/genre";
-    /// /            case "bands" -> "redirect:/search/bands";
-    /// /            case "album" -> "redirect:/search/albums";
-    /// /            case "song" -> "redirect:/search/songs";
-    /// /            default -> "redirect:/home";
-    /// /        };
-//    }
-
-// @GetMapping
-//    public List<SearchResultDto> search(@RequestParam String query, @RequestParam String category) {
-//        return switch (category.toLowerCase()) {
-//            case "genre" -> genreService.findBandsByGenre(query);
-//            case "band" -> bandService.searchBandsByName(query);
-//            case "album" -> albumService.searchAlbumsByTitle(query);
-//            case "song" -> songService.searchSongsByTitle(query);
-//            default -> List.of(); // Empty list for unknown category
-//        };
-//    }
     @GetMapping
     public List<?> search(@RequestParam String query, @RequestParam String category) {
         List<?> result;

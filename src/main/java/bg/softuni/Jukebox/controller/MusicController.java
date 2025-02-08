@@ -13,15 +13,15 @@ public class MusicController {
     }
     @GetMapping("/bands")
     public String band(Model model) {
-        return "bands";
+        return "bands-all";
     }
     @GetMapping("/albums")
     public String album(Model model) {
-        return "album";
+        return "albums-all";
     }
     @GetMapping("/songs")
     public String song(Model model) {
-        return "song";
+        return "songs-all";
     }
 
 }

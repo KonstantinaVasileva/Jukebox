@@ -23,3 +23,11 @@ body{
     color: #ebeef1;
     margin: 100px 0 0 330px;
 }
+
+.songs{
+    display: none;
+}
+
+.album{
+    cursor: pointer;
+}

@@ -21,7 +21,6 @@
         <button onclick="search()">Search</button>
     </section>
     <ul id="results">
-        <!-- Search results will be dynamically added here -->
     </ul>
     <section id="details">
 
@@ -47,7 +46,7 @@
             .then(data => {
                 console.log(data)
                 const resultsList = document.getElementById("results");
-                resultsList.innerHTML = "";  // Clear previous results
+                resultsList.innerHTML = "";
 
                 if (data.length === 0) {
                     resultsList.innerHTML = "<li>No results found</li>";

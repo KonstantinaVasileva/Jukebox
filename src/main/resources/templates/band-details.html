@@ -16,27 +16,31 @@
         <p><strong>Genre:</strong> <span th:text="${band.genre.name}"></span></p>
         <p><strong>Albums:</strong>
         <ul th:each="album : ${band.albums}">
-            <li th:text="${album.title}"></li>
+            <li>
+                <span class="album" onclick="toggleSongs(this)" th:text="${album.title}"></span>
+                <ul class="songs" th:each="song : ${album.songs}">
+                    <li th:text="${song.title}"></li>
+                </ul>
+            </li>
         </ul>
-        </p>
     </section>
-
-    <!--    <section th:if="${album != null}">-->
-    <!--        <h2 th:text="'Album: ' + ${album.title}"></h2>-->
-    <!--        <p><strong>Released:</strong> <span th:text="${album.releaseYear}"></span></p>-->
-    <!--        <p><strong>Band:</strong> <span th:text="${album.band.name}"></span></p>-->
-    <!--    </section>-->
-
-    <!--    <section th:if="${song != null}">-->
-    <!--        <h2 th:text="'Song: ' + ${song.title}"></h2>-->
-    <!--        <p><strong>Duration:</strong> <span th:text="${song.duration}"></span></p>-->
-    <!--        <p><strong>Album:</strong> <span th:text="${song.album.title}"></span></p>-->
-    <!--        <p><strong>Band:</strong> <span th:text="${song.album.band.name}"></span></p>-->
-    <!--    </section>-->
 
     <section th:if="${band == null && album == null && song == null}">
         <p>No details available.</p>
     </section>
 </main>
+<script>
+    function toggleSongs(element) {
+        // Намираме списъка с песни (следващия елемент след заглавието на албума)
+        const songsList = element.nextElementSibling;
+
+        // Превключваме видимостта
+        if (songsList.style.display === "none" || songsList.style.display === "") {
+            songsList.style.display = "block"; // Показваме песните
+        } else {
+            songsList.style.display = "none"; // Скриваме песните
+        }
+    }
+</script>
 </body>
 </html>

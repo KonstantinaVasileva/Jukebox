@@ -3,6 +3,7 @@ package bg.softuni.Jukebox.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,6 +23,8 @@ public class Album {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Band band;
+    @OneToMany(mappedBy = "album")
+    private List<Song> songs;
 
 
 }
