@@ -31,14 +31,13 @@
 </main>
 <script>
     function toggleSongs(element) {
-        // Намираме списъка с песни (следващия елемент след заглавието на албума)
+
         const songsList = element.nextElementSibling;
 
-        // Превключваме видимостта
         if (songsList.style.display === "none" || songsList.style.display === "") {
-            songsList.style.display = "block"; // Показваме песните
+            songsList.style.display = "block";
         } else {
-            songsList.style.display = "none"; // Скриваме песните
+            songsList.style.display = "none";
         }
     }
 </script>
