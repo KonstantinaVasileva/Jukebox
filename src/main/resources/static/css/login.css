@@ -1,11 +1,8 @@
-
-/* Bordered form */
 form {
     border: 3px solid #f1f1f1;
     border-radius: 5px;
 }
 
-/* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -16,7 +13,6 @@ input[type=text], input[type=password] {
     border-radius: 4px;
 }
 
-/* Set a style for all buttons */
 button {
     background-color: #04AA6D;
     border-radius: 4px;
@@ -28,23 +24,19 @@ button {
     width: 40%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
     opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
 .cancelbtn {
     padding: 14px 18px;
     background-color: #f44336;
 }
 
-/* Add padding to containers */
 .container {
     padding: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
         display: block;

@@ -31,3 +31,7 @@ body{
 .album{
     cursor: pointer;
 }
+
+.album:hover{
+    opacity: 0.7;
+}

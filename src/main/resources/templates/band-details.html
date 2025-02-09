@@ -18,8 +18,8 @@
         <ul th:each="album : ${band.albums}">
             <li>
                 <span class="album" onclick="toggleSongs(this)" th:text="${album.title}"></span>
-                <ul class="songs" th:each="song : ${album.songs}">
-                    <li th:text="${song.title}"></li>
+                <ul class="songs">
+                    <li th:each="song : ${album.songs}" th:text="${song.title}"></li>
                 </ul>
             </li>
         </ul>

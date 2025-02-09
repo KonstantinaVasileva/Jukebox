@@ -31,3 +31,9 @@ header nav ul {
 .background-image {
     align-items: center;
 }
+
+p{
+    text-align: center;
+    padding: 20px;
+    margin-left: 100px;
+}
