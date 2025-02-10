@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/css/comment-add.css">
+<head th:replace="common :: head"></head>
+<body>
+
+<form
+        th:action="@{/comment/add}"
+        th:method="post"
+        th:object="${addComment}"
+        id="comment">
+    <h1 style="margin-bottom: 15px;">Add Comment</h1>
+    <textarea
+            rows="4"
+            cols="50"
+            name="comment"
+            form="comment"
+            placeholder="Enter your comment"
+            th:field="*{content}"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

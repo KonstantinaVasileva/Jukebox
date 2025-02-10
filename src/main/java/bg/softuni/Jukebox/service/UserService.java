@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -21,7 +23,7 @@ public class UserService {
 
     public boolean login(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (user == null || passwordEncoder.matches(password, user.getPassword())) {
+        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
             return false;
         }
         return true;
@@ -39,5 +41,9 @@ public class UserService {
         User user = modelMapper.map(registerUserRequest, User.class);
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
         userRepository.save(user);
+    }
+
+    public User findUserById(UUID id) {
+        return userRepository.findById(id).orElse(null);
     }
 }

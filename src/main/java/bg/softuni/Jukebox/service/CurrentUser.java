@@ -5,12 +5,14 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.UUID;
+
 @Component
 @SessionScope
 @Getter
 @Setter
 public class CurrentUser {
-    private long id;
+    private UUID id;
     private String username;
     private boolean isLoggedIn;
 

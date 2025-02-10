@@ -10,6 +10,6 @@ section{
 }
 body {
     background-size: cover;
-    background-repeat: no-repeat; /* Prevents repeating */
-    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    background-position: center;
 }

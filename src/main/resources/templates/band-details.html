@@ -23,11 +23,16 @@
                 </ul>
             </li>
         </ul>
+        <div class="comment">
+        <button type="button">
+            <a th:href="@{/comments/{id}(id=${band.id})}">Comments</a>
+        </button>
+        </div>
     </section>
 
-    <section th:if="${band == null && album == null && song == null}">
-        <p>No details available.</p>
-    </section>
+<!--    <section th:if="${band == null && album == null && song == null}">-->
+<!--        <p>No details available.</p>-->
+<!--    </section>-->
 </main>
 <script>
     function toggleSongs(element) {
