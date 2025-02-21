@@ -3,14 +3,17 @@ package bg.softuni.Jukebox.controller;
 import bg.softuni.Jukebox.model.dto.CommentForm;
 import bg.softuni.Jukebox.model.entity.Band;
 import bg.softuni.Jukebox.model.entity.Comment;
+import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.service.BandService;
 import bg.softuni.Jukebox.service.CommentService;
+import bg.softuni.Jukebox.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,10 +23,12 @@ public class CommentController {
 
     private final CommentService commentService;
     private final BandService bandService;
+    private final UserService userService;
 
-    public CommentController(CommentService commentService, BandService bandService) {
+    public CommentController(CommentService commentService, BandService bandService, UserService userService) {
         this.commentService = commentService;
         this.bandService = bandService;
+        this.userService = userService;
     }
 
     @GetMapping("/add/{id}")
@@ -35,7 +40,7 @@ public class CommentController {
     }
 
     @PostMapping("/add/{id}")
-    public String addComment(@PathVariable UUID id, @Valid CommentForm comment, BindingResult bindingResult, Model model) {
+    public String addComment(@PathVariable UUID id, @Valid CommentForm comment, BindingResult bindingResult, Model model, Principal principal) {
 
         if (bindingResult.hasErrors()) {
             return "comment-add";
@@ -43,7 +48,9 @@ public class CommentController {
 
         Band band = bandService.findById(id);
         model.addAttribute("band", band);
-        commentService.addComment(comment, id);
+        String username = principal.getName();
+        User author = userService.findByUsername(username);
+        commentService.addComment(author, comment, id);
 
         return "redirect:/comments/{id}";
     }

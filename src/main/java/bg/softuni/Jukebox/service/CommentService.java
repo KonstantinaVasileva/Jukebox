@@ -7,6 +7,7 @@ import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -25,10 +26,11 @@ public class CommentService {
         this.bandService = bandService;
     }
 
-    public void addComment(CommentForm comment, UUID bandId) {
+    public void addComment(User author, CommentForm comment, UUID bandId) {
         Band band = bandService.findById(bandId);
+
         Comment newComment = Comment.builder()
-//                .author(author)
+                .author(author)
                 .content(comment.getContent())
                 .band(band)
                 .createdOn(LocalDateTime.now())

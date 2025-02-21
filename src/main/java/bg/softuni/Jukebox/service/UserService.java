@@ -43,4 +43,8 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
         userRepository.save(user);
     }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found!"));
+    }
 }
