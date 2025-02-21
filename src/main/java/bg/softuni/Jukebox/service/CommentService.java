@@ -16,22 +16,19 @@ public class CommentService {
 
 
     private final CommentRepository commentRepository;
-    private final CurrentUser currentUser;
     private final UserService userService;
     private final BandService bandService;
 
-    public CommentService(CommentRepository commentRepository, CurrentUser currentUser, UserService userService, BandService bandService) {
+    public CommentService(CommentRepository commentRepository, UserService userService, BandService bandService) {
         this.commentRepository = commentRepository;
-        this.currentUser = currentUser;
         this.userService = userService;
         this.bandService = bandService;
     }
 
     public void addComment(CommentForm comment, UUID bandId) {
-        User author = userService.findUserById(currentUser.getId());
         Band band = bandService.findById(bandId);
         Comment newComment = Comment.builder()
-                .author(author)
+//                .author(author)
                 .content(comment.getContent())
                 .band(band)
                 .createdOn(LocalDateTime.now())

@@ -5,8 +5,10 @@ import bg.softuni.Jukebox.model.entity.Band;
 import bg.softuni.Jukebox.model.entity.Comment;
 import bg.softuni.Jukebox.service.BandService;
 import bg.softuni.Jukebox.service.CommentService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,10 +35,16 @@ public class CommentController {
     }
 
     @PostMapping("/add/{id}")
-    public String addComment(@PathVariable UUID id, CommentForm comment, Model model) {
+    public String addComment(@PathVariable UUID id, @Valid CommentForm comment, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "comment-add";
+        }
+
         Band band = bandService.findById(id);
         model.addAttribute("band", band);
         commentService.addComment(comment, id);
+
         return "redirect:/comments/{id}";
     }
 

@@ -5,7 +5,7 @@
 <body>
 
 <form
-        th:action="@{/comment/add}"
+        th:action="@{/comments/add/{id}(id=${band.id})}"
         th:method="post"
         th:object="${addComment}"
         id="comment">

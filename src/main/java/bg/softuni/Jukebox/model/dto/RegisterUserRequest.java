@@ -19,8 +19,8 @@ public class RegisterUserRequest {
     @Email(message = "{register.user.email.validation}")
     private String email;
     @NotBlank
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
-    message = "{register.user.password.pattern}")
+    //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
+    //message = "{register.user.password.pattern}")
     private String password;
     private String repeatPassword;
 
