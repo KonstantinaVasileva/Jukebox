@@ -17,6 +17,8 @@ public class WebConfig implements WebMvcConfigurer {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/css/**", "/img/**").permitAll()
                         .requestMatchers("/", "/register").permitAll()
+                        .requestMatchers("/comments/delete").hasAnyRole("MODERATOR", "ADMIN")
+                        .requestMatchers("/albums/add", "/songs/add").hasAnyRole("ARTIST", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login

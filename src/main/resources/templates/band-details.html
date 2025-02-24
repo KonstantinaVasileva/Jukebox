@@ -21,28 +21,23 @@
                 </ul>
             </li>
         </ul>
-        <div class="comment">
-        <button type="button">
-            <a th:href="@{/comments/{id}(id=${band.id})}">Comments</a>
-        </button>
+        <div class="button-container">
+            <div class="comment">
+                <button type="button">
+                    <a th:href="@{/comments/{id}(id=${band.id})}">Comments</a>
+                </button>
+            </div>
+            <div class="back">
+                <button type="button">
+                    <a th:href="@{/home}">Back</a></button>
+            </div>
         </div>
     </section>
 
-<!--    <section th:if="${band == null && album == null && song == null}">-->
-<!--        <p>No details available.</p>-->
-<!--    </section>-->
+    <!--    <section th:if="${band == null && album == null && song == null}">-->
+    <!--        <p>No details available.</p>-->
+    <!--    </section>-->
 </main>
-<script>
-    function toggleSongs(element) {
-
-        const songsList = element.nextElementSibling;
-
-        if (songsList.style.display === "none" || songsList.style.display === "") {
-            songsList.style.display = "block";
-        } else {
-            songsList.style.display = "none";
-        }
-    }
-</script>
+<script th:src="@{/js/band_details}"></script>
 </body>
 </html>

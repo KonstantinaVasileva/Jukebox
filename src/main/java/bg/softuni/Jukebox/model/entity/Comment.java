@@ -17,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(columnDefinition = "TEXT")
     private String content;
