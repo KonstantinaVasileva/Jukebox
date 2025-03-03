@@ -64,14 +64,12 @@
                th:errors="*{repeatPassword}"
                class="invalid-feedback text-danger"></small>
 
-        <!--        <label>-->
-        <!--            <input type="checkbox" checked="checked" name="remember"> Remember me-->
-        <!--        </label>-->
         <label>
             <input type="checkbox" id="agree" onchange="toggleRegisterButton()">
             <p>
                 By creating an account you agree to our
-                <a th:href="@{/register/TermsAndPrivacy}" style="color:dodgerblue" th:text="'Terms & Conditions'">Terms & Privacy
+                <a th:href="@{/register/terms-and-privacy}" style="color:dodgerblue" th:text="'Terms & Conditions'">Terms
+                    & Privacy
                     Terms & Privacy
                 </a>.
             </p>
@@ -84,18 +82,7 @@
                 Register
             </button>
         </div>
-        <script>
-            function toggleRegisterButton() {
-                const checkbox = document.getElementById("agree");
-                const registerBtn = document.getElementById("registerBtn");
-
-                if (checkbox.checked) {
-                    registerBtn.disabled = false;
-                } else {
-                    registerBtn.disabled = true;
-                }
-            }
-        </script>
+        <script src="/js/register.js"></script>
 
     </div>
 </form>

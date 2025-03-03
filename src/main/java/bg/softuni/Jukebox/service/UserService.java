@@ -1,6 +1,7 @@
 package bg.softuni.Jukebox.service;
 
 import bg.softuni.Jukebox.model.dto.RegisterUserRequest;
+import bg.softuni.Jukebox.model.entity.Role;
 import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.UserRepository;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
@@ -41,6 +42,7 @@ public class UserService implements UserDetailsService {
     public void register(RegisterUserRequest registerUserRequest) {
         User user = modelMapper.map(registerUserRequest, User.class);
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
+        user.setRole(Role.USER);
         userRepository.save(user);
     }
 

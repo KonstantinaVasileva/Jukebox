@@ -1,9 +1,5 @@
 package bg.softuni.Jukebox.init;
 
-import bg.softuni.Jukebox.model.entity.Album;
-import bg.softuni.Jukebox.model.entity.Band;
-import bg.softuni.Jukebox.repository.AlbumRepository;
-import bg.softuni.Jukebox.repository.BandRepository;
 import bg.softuni.Jukebox.service.AlbumService;
 import bg.softuni.Jukebox.service.BandService;
 import bg.softuni.Jukebox.service.GenreService;

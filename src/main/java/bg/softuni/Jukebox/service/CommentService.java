@@ -7,7 +7,6 @@ import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -17,12 +16,10 @@ public class CommentService {
 
 
     private final CommentRepository commentRepository;
-    private final UserService userService;
     private final BandService bandService;
 
-    public CommentService(CommentRepository commentRepository, UserService userService, BandService bandService) {
+    public CommentService(CommentRepository commentRepository, BandService bandService) {
         this.commentRepository = commentRepository;
-        this.userService = userService;
         this.bandService = bandService;
     }
 

@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-//@RequestMapping("/users")
 public class UserController {
 
-    //    private final CurrentUser currentUser;
     private final UserService userService;
 
     public UserController(UserService userService) {
-//        this.currentUser = currentUser;
         this.userService = userService;
     }
 
@@ -51,7 +48,6 @@ public class UserController {
     public String register(@Valid RegisterUserRequest registerUserRequest,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes) {
-        System.out.println("Errors: " + bindingResult.getAllErrors());
 
         if (registerUserRequest.getPassword() != null &&
                 !registerUserRequest.getPassword().equals(registerUserRequest.getRepeatPassword())) {
@@ -84,8 +80,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/register/TermsAndPrivacy")
+    @GetMapping("/register/terms-and-privacy")
     public String TermsAndConditions() {
-        return "TermsAndConditions";
+        return "terms-and-conditions";
     }
 }

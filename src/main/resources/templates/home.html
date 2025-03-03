@@ -2,73 +2,22 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <link href="css/home.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/dashboard.css">
+<script src="/js/dashboard.js" defer></script>
 <head th:replace="~{common::head}">
 </head>
 <body>
 <header th:replace="~{common::header}"></header>
+<div th:replace="~{fragments/dashboard.html}"></div>
 <main class="nav-list-search">
     <p>Welcome to Jukebox
         <br> Are you ready to listen to your music?
     </p>
-    <section>
-        <input type="text" id="searchQuery" placeholder="Enter your search..."/>
-        <select id="category">
-            <option value="genre">Genre</option>
-            <option value="band">Band</option>
-            <option value="album">Album</option>
-            <option value="song">Song</option>
-        </select>
-        <button onclick="search()">Search</button>
-    </section>
-    <ul id="results">
-    </ul>
+
     <section id="details">
 
     </section>
 </main>
-<script>
-    function search() {
-
-        console.log("Search function triggered");
-
-        const query = document.getElementById("searchQuery").value;
-        const category = document.getElementById("category").value;
-
-        if (!query) {
-            alert("Please enter a search query!");
-            return;
-        }
-
-        fetch(`/search?query=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Error fetching search results");
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data)
-                console.log("Data received:", data);
-                const resultsList = document.getElementById("results");
-                resultsList.innerHTML = "";
-
-                if (data.length === 0) {
-                    console.log("Executing empty result condition...");
-                    resultsList.innerHTML = "<li>No results found</li>";
-                    return;
-                }
-
-                data.forEach(item => {
-                    const li = document.createElement("li");
-                    li.innerHTML = `<a href="/details/${item.id}">${item.name || item.title || item}</a>`;
-                    resultsList.appendChild(li);
-
-                });
-            })
-            .catch(error => console.error("Error fetching search results:", error));
-    }
-
-</script>
-
+<script src="/js/home.js"></script>
 </body>
 </html>

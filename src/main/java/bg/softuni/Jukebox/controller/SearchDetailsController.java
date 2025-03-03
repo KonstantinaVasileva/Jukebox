@@ -35,9 +35,7 @@ public class SearchDetailsController {
 
         if (bandService.existsById(id)) {
             Band band = bandService.findById(id);
-            System.out.println("Image URL: " + band.getImage());
             model.addAttribute("band", band);
-            System.out.println();
             return "band-details";
         } else if (albumService.existsById(id)) {
             Album album = albumService.findById(id);
