@@ -14,9 +14,11 @@
         <span>&#9664;</span>
     </div>
     <div class="user-info">
-        <h3 >Username</h3>
-        <p><strong>Role:</strong> P</p>
-        <p><strong>Comments:</strong> <span >0</span></p>
+        <h3 th:text="${user.username}">Username</h3>
+        <p><strong>Role:</strong>
+        <th:block th:text="${user.role}"></th:block>
+        </p>
+        <p><strong>Comments:</strong> <span th:text="${user.comments.size()}">0</span></p>
 
         <section>
         <input type="text" id="searchQuery" placeholder="Search..." class="search-box">

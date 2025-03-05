@@ -33,22 +33,26 @@ public class SearchDetailsController {
     @GetMapping("/{id}")
     public String getDetails(@PathVariable UUID id, Model model) {
 
+        Band band;
+
         if (bandService.existsById(id)) {
-            Band band = bandService.findById(id);
-            model.addAttribute("band", band);
-            return "band-details";
+            band = bandService.findById(id);
         } else if (albumService.existsById(id)) {
             Album album = albumService.findById(id);
-            model.addAttribute("album", album);
-            return  "album-details";
+            band = album.getBand();
+//            model.addAttribute("album", album);
+//            return  "album-details";
         } else if (songService.existsById(id)) {
             Song song = songService.findById(id);
-            model.addAttribute("song", song);
-            return  "song-details";
+            band = song.getBand();
+//            model.addAttribute("song", song);
+//            return  "song-details";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
         }
 
+        model.addAttribute("band", band);
+        return "band-details";
     }
 }
 

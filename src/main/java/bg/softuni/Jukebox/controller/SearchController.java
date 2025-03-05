@@ -35,7 +35,7 @@ public class SearchController {
         List<?> result;
         switch (category.toLowerCase()) {
             case "genre" -> result = genreService.findBandByGenre(query);
-            case "bands" -> result = bandService.findBandBySearch(query);
+            case "band" -> result = bandService.findBandBySearch(query);
             case "album" -> result = albumService.findAlbumBySearch(query);
             case "song" -> result = songService.findSongByTitle(query);
             default -> throw new IllegalArgumentException("Invalid category: " + category);
