@@ -14,13 +14,16 @@
         <span>&#9664;</span>
     </div>
     <div class="user-info">
-        <h3 th:text="${user.username}">Username</h3>
+        <h4> Hello
+            <th:block th:text="${user.username}"></th:block>
+            !
+        </h4>
         <p><strong>Role:</strong>
-        <th:block th:text="${user.role}"></th:block>
+            <th:block th:text="${user.role}"></th:block>
         </p>
-        <p><strong>Comments:</strong> <span th:text="${user.comments.size()}">0</span></p>
-
-        <section>
+        <p><strong>Comments:</strong> <span th:text="${user.comments.size()}"></span></p>
+    </div>
+    <section>
         <input type="text" id="searchQuery" placeholder="Search..." class="search-box">
         <select id="category">
             <option value="genre">Genre</option>
@@ -29,17 +32,16 @@
             <option value="song">Song</option>
         </select>
         <button class="search-btn" onclick="search()">🔍</button>
-        </section>
-        <ul id="results">
-        </ul>
-        <form th:href="@{/users}" >
-            <button class="all-users-btn">All Users</button>
-        </form>
+    </section>
+    <ul id="results">
+    </ul>
+    <form th:href="@{/users}">
+        <button class="all-users-btn">All Users</button>
+    </form>
 
-        <form th:action="@{/logout}" method="post">
-            <button type="submit" class="logout-btn">Logout</button>
-        </form>
-    </div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
 </div>
 </body>
 </html>

@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<link href="css/home.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/dashboard.css">
 <script src="/js/dashboard.js" defer></script>
-<head th:replace="~{common::head}">
+<head th:replace="~{fragments/common::head}">
 </head>
 <body>
-<header th:replace="~{common::header}"></header>
+<header th:replace="~{fragments/common::header}"></header>
 <div th:replace="~{fragments/dashboard.html}"></div>
 <main class="nav-list-search">
-    <p>Welcome to Jukebox
+    <p class="text" style="font-size: xxx-large;
+    text-align: center;
+    text-shadow: 1px 1px 1px wheat;
+    color: black;">Welcome to Jukebox
         <br> Are you ready to listen to your music?
     </p>
 
