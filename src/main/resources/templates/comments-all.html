@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="/css/comments-all.css">
 <head th:replace="~{fragments/common :: head}">
 </head>
@@ -8,7 +8,9 @@
 <h1 th:text="${band.name}">Band Name</h1>
 <h2>Comments</h2>
 <ul>
-    <li th:each="comment : ${comments}" th:text="${comment.content}">Comment content</li>
+    <li th:each="comment : ${comments}"><span th:text="${comment.content}">Comment content</span>
+        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/comments/delete/{id}(id=${comment.id})}">Delete</a>
+    </li>
 </ul>
 
 <a th:href="@{/comments/add/{id}(id=${band.id})}">Add Comment</a>

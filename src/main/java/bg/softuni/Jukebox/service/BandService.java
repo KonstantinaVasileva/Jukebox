@@ -1,6 +1,6 @@
 package bg.softuni.Jukebox.service;
 
-import bg.softuni.Jukebox.model.dto.BandSeed;
+import bg.softuni.Jukebox.web.dto.BandSeed;
 import bg.softuni.Jukebox.model.entity.Band;
 import bg.softuni.Jukebox.model.entity.Genre;
 import bg.softuni.Jukebox.repository.BandRepository;

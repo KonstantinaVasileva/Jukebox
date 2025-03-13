@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.controller;
+package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.service.UserService;
@@ -7,8 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.security.Principal;
 
 @Controller
 public class HomeController {

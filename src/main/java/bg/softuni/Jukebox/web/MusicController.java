@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.controller;
+package bg.softuni.Jukebox.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

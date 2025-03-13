@@ -1,6 +1,6 @@
-package bg.softuni.Jukebox.controller;
+package bg.softuni.Jukebox.web;
 
-import bg.softuni.Jukebox.model.dto.CommentForm;
+import bg.softuni.Jukebox.web.dto.CommentForm;
 import bg.softuni.Jukebox.model.entity.Band;
 import bg.softuni.Jukebox.model.entity.Comment;
 import bg.softuni.Jukebox.model.entity.User;
@@ -31,6 +31,11 @@ public class CommentController {
         this.userService = userService;
     }
 
+    @ModelAttribute("loggedInUser")
+    public User getLoggedInUser(Principal principal) {
+        return userService.findByUsername(principal.getName());
+    }
+
     @GetMapping("/add/{id}")
     public String addComment(@PathVariable UUID id, Model model) {
         Band band = bandService.findById(id);
@@ -40,7 +45,11 @@ public class CommentController {
     }
 
     @PostMapping("/add/{id}")
-    public String addComment(@PathVariable UUID id, @Valid CommentForm comment, BindingResult bindingResult, Model model, Principal principal) {
+    public String addComment(@PathVariable UUID id,
+                             @Valid CommentForm comment,
+                             BindingResult bindingResult,
+                             Model model,
+                             Principal principal) {
 
         if (bindingResult.hasErrors()) {
             return "comment-add";

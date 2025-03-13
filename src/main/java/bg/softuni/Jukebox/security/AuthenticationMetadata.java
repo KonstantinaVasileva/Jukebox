@@ -1,5 +1,6 @@
 package bg.softuni.Jukebox.security;
 
+import bg.softuni.Jukebox.model.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,8 @@ public class AuthenticationMetadata implements UserDetails {
     private UUID id;
     private String username;
     private String password;
+    private Role role;
+    private boolean banned;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,16 +42,16 @@ public class AuthenticationMetadata implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return this.banned;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return this.banned;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return this.banned;
     }
 }

@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.model.dto;
+package bg.softuni.Jukebox.web.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,14 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RegisterUserRequest {
     @NotBlank
-    @Size(min = 3, max = 20, message = "{register.user.username.size}")
+    @Size(min = 3, max = 20, message = "Username must between 3 and 20 symbols!")
     private String username;
     @NotBlank
-    @Email(message = "{register.user.email.validation}")
+    @Email(message = "Not valid email!")
     private String email;
     @NotBlank
     //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
-    //message = "{register.user.password.pattern}")
+    //message = "Password must content minimum eight characters, at least one letter, one number and one special character!")
     private String password;
     private String repeatPassword;
 

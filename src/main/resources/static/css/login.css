@@ -63,5 +63,5 @@ button{
 label, h1, p{
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
 }

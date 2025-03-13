@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.model.dto;
+package bg.softuni.Jukebox.web.dto;
 
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

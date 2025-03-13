@@ -1,6 +1,6 @@
 package bg.softuni.Jukebox.service;
 
-import bg.softuni.Jukebox.model.dto.CommentForm;
+import bg.softuni.Jukebox.web.dto.CommentForm;
 import bg.softuni.Jukebox.model.entity.Band;
 import bg.softuni.Jukebox.model.entity.Comment;
 import bg.softuni.Jukebox.model.entity.User;

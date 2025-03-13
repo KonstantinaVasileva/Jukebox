@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.controller;
+package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.model.entity.Album;
 import bg.softuni.Jukebox.model.entity.Band;

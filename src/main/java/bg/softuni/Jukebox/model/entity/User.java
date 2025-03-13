@@ -25,6 +25,7 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private boolean banned;
     @OneToMany(mappedBy = "author")
     private List<Comment> comments;
 }

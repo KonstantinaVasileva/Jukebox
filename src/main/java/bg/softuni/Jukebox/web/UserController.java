@@ -1,9 +1,10 @@
-package bg.softuni.Jukebox.controller;
+package bg.softuni.Jukebox.web;
 
-import bg.softuni.Jukebox.model.dto.LoginUserRequest;
-import bg.softuni.Jukebox.model.dto.RegisterUserRequest;
+import bg.softuni.Jukebox.web.dto.LoginUserRequest;
+import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import bg.softuni.Jukebox.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 public class UserController {
@@ -55,9 +58,8 @@ public class UserController {
                     new FieldError("registerUserDTO", "repeatPassword", "Passwords do not match")
             );
         }
-
-        boolean isValid = userService.validateUserRegistration(registerUserRequest);
-        if (bindingResult.hasErrors() || !isValid) {
+        userService.validateUserRegistration(registerUserRequest);
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("registerUserDTO", registerUserRequest);
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.registerUserDTO", bindingResult);
@@ -68,10 +70,17 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(value = "error", required = false) String errorParam, Model model) {
+    public String login(@RequestParam(value = "error", required = false) String errorParam,
+                        Model model) {
+
         if (errorParam != null) {
             model.addAttribute("errorMessage", "Incorrect username or password");
         }
+
+//        if (userService.isBannedUser() {
+//
+//        }
+
         return "login";
     }
 
