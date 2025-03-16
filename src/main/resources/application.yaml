@@ -31,5 +31,8 @@ spring:
   web:
     resources:
       static-locations: classpath:/static/, classpath:/custom-folder/
-#      static-locations=classpath:
-#        /static/,classpath:/custom-folder/
+  #      static-locations=classpath:
+  #        /static/,classpath:/custom-folder/
+  logging:
+    level:
+      org.springframework.security:DEBUG

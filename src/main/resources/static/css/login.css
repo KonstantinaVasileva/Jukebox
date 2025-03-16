@@ -1,4 +1,8 @@
 form {
+    /*height: 300px;*/
+    margin-left: 475px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
     border: 3px solid #f1f1f1;
     border-radius: 5px;
 }
@@ -42,26 +46,29 @@ button:hover {
         display: block;
         float: none;
     }
+
     .cancelbtn {
         width: 100%;
     }
-}
-
-label, h1{
-    display: flex;
-    justify-content: center;
 }
 
 h1.text-center.mt-2 {
     margin-left: 110px;
 }
 
-button{
+button {
     align-items: center;
 }
 
-label, h1, p{
+label, h1, p {
     display: flex;
     justify-content: center;
-    color: black;
+    color: white;
+}
+
+.alert-danger {
+    display: flex;
+    justify-content: center;
+    color: red;
+    text-shadow: 1px 1px #1e1e1e;
 }

@@ -7,27 +7,26 @@
 <body>
 <header th:replace="~{fragments/common::header}"></header>
 <main class="login">
-    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
 
-    <form style="height: 300px;
-          margin-left: 38.5%;
-          width: 400px;"
-          th:action="@{/login}"
+    <form th:action="@{/login}"
           th:method="post"
           th:object="${loginUserRequest}">
-        <!--        <div-->
-        <!--                th:if="${loginError==true}"-->
-        <!--                class="text-danger">Incorrect username or password!-->
-        <!--        </div>-->
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
+        <span
+                class="alert-danger"
+                th:if="${errorMessage}"
+                th:text="${errorMessage}">Incorrect username or password!
+        </span>
         <div class="container">
             <label th:for="username"><b>Username</b></label>
             <input
                     th:field="*{username}"
-                    th:errorclass="is-invalid"
                     type="text" placeholder="Enter Username" name="username" id="username" required>
 
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            <label th:for="password"><b>Password</b></label>
+            <input
+                    th:field="*{password}"
+                    type="password" placeholder="Enter Password" name="password" id="password" required>
 
 
             <!--            <label>-->
