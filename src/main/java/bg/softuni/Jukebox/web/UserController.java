@@ -36,10 +36,10 @@ public class UserController {
         return new LoginUserRequest();
     }
 
-    @ModelAttribute("logonError")
-    public void getLoginError(Model model) {
-        model.addAttribute("loginError");
-    }
+//    @ModelAttribute("logonError")
+//    public void getLoginError(Model model) {
+//        model.addAttribute("loginError");
+//    }
 
     @GetMapping("/register")
     public String register() {
@@ -55,14 +55,14 @@ public class UserController {
         if (registerUserRequest.getPassword() != null &&
                 !registerUserRequest.getPassword().equals(registerUserRequest.getRepeatPassword())) {
             bindingResult.addError(
-                    new FieldError("registerUserDTO", "repeatPassword", "Passwords do not match")
+                    new FieldError("registerUserRequest", "repeatPassword", "Passwords do not match")
             );
         }
         userService.validateUserRegistration(registerUserRequest);
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserRequest);
+            redirectAttributes.addFlashAttribute("registerUserRequest", registerUserRequest);
             redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.registerUserDTO", bindingResult);
+                    "org.springframework.validation.BindingResult.registerUserRequest", bindingResult);
             return "redirect:/register";
         }
         userService.register(registerUserRequest);

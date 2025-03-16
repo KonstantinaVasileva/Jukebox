@@ -1,13 +1,12 @@
 package bg.softuni.Jukebox.service;
 
+//import bg.softuni.Jukebox.exeption.UserAlreadyExistsException;
 import bg.softuni.Jukebox.exeption.UserAlreadyExistsException;
-import bg.softuni.Jukebox.web.dto.LoginUserRequest;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import bg.softuni.Jukebox.model.entity.Role;
 import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.UserRepository;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
-import org.hibernate.sql.results.DomainResultCreationException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +21,7 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new DomainResultCreationException("User with this username dose not exist!"));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with this username dose not exist!"));
         return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isBanned());
     }
 
@@ -52,7 +51,7 @@ public class UserService implements UserDetailsService {
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() ->
-                new bg.softuni.Jukebox.exeption.UsernameNotFoundException("User with username " + username + " not found!"));
+                new UsernameNotFoundException("User with username " + username + " not found!"));
     }
 
     public boolean isBannedUser() {

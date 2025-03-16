@@ -14,16 +14,19 @@
         <label th:for="username"><b>Username</b></label>
         <input
                 th:field="*{username}"
-                th:errorclass="'is-invalid'"
                 class="form-control"
                 type="text"
                 placeholder="Enter Username"
                 name="username"
                 id="username"
                 required>
-        <small th:if="${#fields.hasErrors('username')}"
-               th:errors="*{username}"
-               class="invalid-feedback text-danger"></small>
+        <div>
+        <span class="alert-danger"
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}"></span>
+            <span class="alert-danger"
+                  th:text="${userAlreadyExistsException}"></span>
+        </div>
 
         <label th:for="email"><b>Email</b></label>
         <input
@@ -46,9 +49,9 @@
                 name="password"
                 id="password"
                 required>
-        <small th:if="${#fields.hasErrors('password')}"
-               th:errors="*{password}"
-               class="invalid-feedback text-danger"></small>
+        <small class="alert-danger"
+               th:if="${#fields.hasErrors('password')}"
+               th:errors="*{password}"></small>
 
         <label th:for="psw-repeat"><b>Repeat Password</b></label>
         <input
@@ -60,9 +63,9 @@
                 name="psw-repeat"
                 id="psw-repeat"
                 required>
-        <small th:if="${#fields.hasErrors('repeatPassword')}"
-               th:errors="*{repeatPassword}"
-               class="invalid-feedback text-danger"></small>
+        <small class="alert-danger"
+               th:if="${#fields.hasErrors('repeatPassword')}"
+               th:errors="*{repeatPassword}"></small>
 
         <label>
             <input type="checkbox" id="agree" onchange="toggleRegisterButton()">

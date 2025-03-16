@@ -68,3 +68,8 @@ label, h1, p{
     justify-content: center;
     color: white;
 }
+
+.alert-danger{
+    color: red;
+    text-shadow: 1px 1px #1e1e1e;
+}

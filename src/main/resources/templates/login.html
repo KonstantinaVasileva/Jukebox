@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"
-xmlns:th="http://www.thymeleaf.org">
-<link  href="/css/login.css" rel="stylesheet"/>
+      xmlns:th="http://www.thymeleaf.org">
+<link href="/css/login.css" rel="stylesheet"/>
 <head th:replace="~{fragments/common::head}">
 </head>
 <body>
@@ -15,9 +15,10 @@ xmlns:th="http://www.thymeleaf.org">
           th:action="@{/login}"
           th:method="post"
           th:object="${loginUserRequest}">
-        <div
-                th:if="${loginError==true}"
-                class="text-danger">Incorrect username or password!</div>
+        <!--        <div-->
+        <!--                th:if="${loginError==true}"-->
+        <!--                class="text-danger">Incorrect username or password!-->
+        <!--        </div>-->
         <div class="container">
             <label th:for="username"><b>Username</b></label>
             <input
@@ -29,15 +30,15 @@ xmlns:th="http://www.thymeleaf.org">
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
 
-<!--            <label>-->
-<!--                <input type="checkbox" checked="checked" name="remember"> Remember me-->
-<!--            </label>-->
+            <!--            <label>-->
+            <!--                <input type="checkbox" checked="checked" name="remember"> Remember me-->
+            <!--            </label>-->
         </div>
 
-        <div class="buttons" >
+        <div class="buttons">
             <button type="submit">Login</button>
-            <button type="button" class="cancelbtn"><a th:href="@{/}"> Cancel </a> </button>
-<!--            <span class="psw"> <a href="#">Forgot password?</a></span>-->
+            <button type="button" class="cancelbtn"><a th:href="@{/}"> Cancel </a></button>
+            <!--            <span class="psw"> <a href="#">Forgot password?</a></span>-->
         </div>
     </form>
 </main>
