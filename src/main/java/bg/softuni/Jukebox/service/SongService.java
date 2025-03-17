@@ -40,11 +40,13 @@ public class SongService {
                     .title("Mountain Music")
                     .album(albumService.findAlbumByTitleAndBand("Mountain Music", "Alabama"))
                     .band(bandService.findByName("Alabama"))
+                    .genre(bandService.findByName("Alabama").getGenre().getName())
                     .build());
             songs.add(Song.builder()
                     .title("Close Enough to Perfect ")
                     .album(albumService.findAlbumByTitleAndBand("Mountain Music", "Alabama"))
                     .band(bandService.findByName("Alabama"))
+                    .genre(bandService.findByName("Alabama").getGenre().getName())
                     .build());
             songRepository.saveAll(songs);
         }

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<link href="/css/register.css" rel="stylesheet"/>
+<link href="/css/login.css" rel="stylesheet"/>
 <head th:replace="~{fragments/common::head}">
 </head>
 <body>
@@ -67,23 +67,17 @@
                th:if="${#fields.hasErrors('repeatPassword')}"
                th:errors="*{repeatPassword}"></small>
 
-        <label>
+        <label class="checkbox-container">
             <input type="checkbox" id="agree" onchange="toggleRegisterButton()">
             <p>
                 By creating an account you agree to our
-                <a th:href="@{/register/terms-and-privacy}" style="color:dodgerblue" th:text="'Terms & Conditions'">Terms
-                    & Privacy
-                    Terms & Privacy
-                </a>.
+                <a th:href="@{/register/terms-and-privacy}" style="color:dodgerblue" th:text="'Terms & Conditions'"></a>.
             </p>
         </label>
-        <div class="clearfix">
+        <div class="buttons">
+            <button type="submit">Register</button>
             <button type="button" class="cancelbtn">
-                <a th:href="@{/}" style="text-decoration: none; color: white;">Cancel</a>
-            </button>
-            <button type="submit" id="registerBtn" class="registerbtn" disabled>
-                Register
-            </button>
+                <a th:href="@{/}">Cancel</a></button>
         </div>
         <script src="/js/register.js"></script>
 

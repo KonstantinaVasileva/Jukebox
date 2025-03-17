@@ -45,7 +45,9 @@ public class UserService implements UserDetailsService {
     public void register(RegisterUserRequest registerUserRequest) {
         User user = modelMapper.map(registerUserRequest, User.class);
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
-        user.setRole(Role.USER);
+        if (user.getRole() != Role.ADMIN) {
+            user.setRole(Role.USER);
+        }
         userRepository.save(user);
     }
 

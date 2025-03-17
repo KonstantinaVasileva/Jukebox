@@ -1,17 +1,17 @@
 form {
-    /*height: 300px;*/
-    margin-left: 475px;
     width: 400px;
+    margin: 50px auto;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
     border: 3px solid #f1f1f1;
     border-radius: 5px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
+    display: block;
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: 4px;
@@ -22,18 +22,23 @@ button {
     border-radius: 4px;
     color: white;
     padding: 14px 20px;
-    margin: 8px 19px;
     border: none;
     cursor: pointer;
-    width: 40%;
+    width: 50%;
+    text-align: center;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .cancelbtn {
-    padding: 14px 18px;
     background-color: #f44336;
 }
 
@@ -42,33 +47,42 @@ button:hover {
 }
 
 @media screen and (max-width: 300px) {
-    span.psw {
-        display: block;
-        float: none;
+
+    form {
+        width: 90%;
     }
 
-    .cancelbtn {
+    .button-container {
+        width: 100%;
+    }
+
+    button {
         width: 100%;
     }
 }
 
-h1.text-center.mt-2 {
-    margin-left: 110px;
-}
-
-button {
-    align-items: center;
-}
-
 label, h1, p {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     color: white;
 }
 
 .alert-danger {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     color: red;
     text-shadow: 1px 1px #1e1e1e;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center; /* Align checkbox and text in one line */
+    gap: 10px; /* Add space between checkbox and text */
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-container p {
+    margin: 0; /* Remove default margin */
 }
