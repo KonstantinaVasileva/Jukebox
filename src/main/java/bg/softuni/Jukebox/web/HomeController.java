@@ -1,12 +1,15 @@
 package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.model.entity.User;
+import bg.softuni.Jukebox.security.AuthenticationMetadata;
 import bg.softuni.Jukebox.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.UUID;
 
 @Controller
 public class HomeController {
@@ -24,9 +27,9 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String getHome(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        String name = userDetails.getUsername();
-        User user = userService.findByUsername(name);
+    public String getHome(@AuthenticationPrincipal AuthenticationMetadata metadata, Model model) {
+        UUID id = metadata.getId();
+        User user = userService.findById(id);
         model.addAttribute("user", user);
         return "home";
     }

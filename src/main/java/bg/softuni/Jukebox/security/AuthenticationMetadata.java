@@ -44,16 +44,16 @@ public class AuthenticationMetadata implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return this.banned;
+        return !banned;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return this.banned;
+        return !banned;
     }
 
     @Override
     public boolean isEnabled() {
-        return this.banned;
+        return !banned;
     }
 }

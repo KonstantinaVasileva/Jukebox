@@ -1,7 +1,7 @@
 package bg.softuni.Jukebox.web;
 
-import bg.softuni.Jukebox.exeption.UserAlreadyExistsException;
-import bg.softuni.Jukebox.exeption.UsernameNotFoundException;
+import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
+import bg.softuni.Jukebox.exception.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;

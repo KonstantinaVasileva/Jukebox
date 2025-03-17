@@ -1,4 +1,4 @@
-package bg.softuni.Jukebox.exeption;
+package bg.softuni.Jukebox.exception;
 
 
 public class UsernameNotFoundException extends RuntimeException {

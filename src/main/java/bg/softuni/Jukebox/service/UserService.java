@@ -1,12 +1,13 @@
 package bg.softuni.Jukebox.service;
 
-//import bg.softuni.Jukebox.exeption.UserAlreadyExistsException;
-import bg.softuni.Jukebox.exeption.UserAlreadyExistsException;
+//import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
+import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import bg.softuni.Jukebox.model.entity.Role;
 import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.UserRepository;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,14 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
+@Slf4j
 @Service
 public class UserService implements UserDetailsService {
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with this username dose not exist!"));
-        return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isBanned());
-    }
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -40,6 +38,13 @@ public class UserService implements UserDetailsService {
         if (byUsernameOrEmail != null) {
             throw new UserAlreadyExistsException("Username is in used, choose another one!");
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User with this username dose not exist!"));
+        return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isBanned());
     }
 
     public void register(RegisterUserRequest registerUserRequest) {
@@ -60,5 +65,9 @@ public class UserService implements UserDetailsService {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> byUsername = userRepository.findByUsername(userDetails.getUsername());
         return byUsername.get().isBanned();
+    }
+
+    public User findById(UUID id) {
+        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " not found!"));
     }
 }
