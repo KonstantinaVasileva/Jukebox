@@ -80,11 +80,11 @@ public class UserController {
 
         return "login";
     }
-
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/";
-    }
+//
+//    @GetMapping("/logout")
+//    public String logout() {
+//        return "redirect:/";
+//    }
 
     @GetMapping("/register/terms-and-privacy")
     public String TermsAndConditions() {

@@ -7,6 +7,7 @@ import bg.softuni.Jukebox.model.entity.User;
 import bg.softuni.Jukebox.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -36,6 +37,23 @@ public class CommentService {
     }
 
     public List<Comment> allComments(UUID bandId) {
-        return commentRepository.findByBand_Id(bandId);
+        return commentRepository.findByBand_IdOrderByCreatedOn(bandId);
+    }
+
+    public void setCommentToDelete(UUID id, Principal principal) {
+        Comment comment = commentRepository.getCommentsById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+
+        comment.setDeleted(true);
+        commentRepository.save(comment);
+    }
+
+    public UUID getBandIdByCommentId(UUID id) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("Comment not found"));
+        return comment.getBand().getId();
+    }
+
+    public List<Comment> getNonDeletedCommentsByUser(UUID userId) {
+        return commentRepository.findByAuthor_IdAndDeletedIs(userId, false);
     }
 }

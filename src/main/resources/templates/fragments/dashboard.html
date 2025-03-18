@@ -21,7 +21,7 @@
         <p><strong>Role:</strong>
             <th:block th:text="${user.role}"></th:block>
         </p>
-        <p><strong>Comments:</strong> <span th:text="${user.comments.size()}"></span></p>
+        <p><strong>Comments:</strong> <span th:text="${nonDeletedCommentsByUser != 0 ? nonDeletedCommentsByUser : '0'}" ></span></p>
     </div>
     <section>
         <input type="text" id="searchQuery" placeholder="Search..." class="search-box">
@@ -39,7 +39,7 @@
         <button class="all-users-btn">All Users</button>
     </form>
 
-    <form th:action="@{/logout}" method="post">
+    <form th:action="@{/logout}" method="get">
         <button type="submit" class="logout-btn">Logout</button>
     </form>
 </div>

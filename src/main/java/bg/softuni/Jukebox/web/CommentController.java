@@ -8,6 +8,7 @@ import bg.softuni.Jukebox.service.BandService;
 import bg.softuni.Jukebox.service.CommentService;
 import bg.softuni.Jukebox.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,6 +72,14 @@ public class CommentController {
         List<Comment> allComments = commentService.allComments(id);
         model.addAttribute("comments", allComments);
         return "comments-all";
+    }
+
+    @PreAuthorize("@commentSecurityService.isOwnerOrAdmin(#id, authentication)")
+    @GetMapping("/delete/{id}")
+    public String deleteComment(@PathVariable UUID id, Principal principal) {
+        UUID bandId = commentService.getBandIdByCommentId(id);
+        commentService.setCommentToDelete(id, principal);
+        return "redirect:/comments/" + bandId;
     }
 
 }

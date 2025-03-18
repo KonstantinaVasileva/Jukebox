@@ -27,7 +27,6 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-
   web:
     resources:
       static-locations: classpath:/static/, classpath:/custom-folder/
