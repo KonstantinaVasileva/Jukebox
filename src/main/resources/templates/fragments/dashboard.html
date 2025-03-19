@@ -35,11 +35,11 @@
     </section>
     <ul id="results">
     </ul>
-    <form th:href="@{/users}">
+    <form th:action="@{/users}">
         <button th:if="${user.role.name == 'ADMIN'}" class="all-users-btn">All Users</button>
     </form>
 
-    <form th:href="@{/comments/reported}">
+    <form th:action="@{/comments/report/all}">
         <button th:if="${user.role.name == 'ADMIN'}" class="reported-comments-btn">Reported comments</button>
     </form>
 

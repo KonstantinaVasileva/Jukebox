@@ -58,7 +58,7 @@ a {
     transition: background-color 0.3s ease;
 }
 
-a:hover {
+.report-to-admin:hover .delete:hover {
     background-color: #45a049;
 }
 
@@ -82,4 +82,8 @@ ul li {
 
 ul li:not(:last-child) {
     margin-bottom: 15px;
+}
+
+.reported-comments{
+    background-color: #ff1c1c;
 }

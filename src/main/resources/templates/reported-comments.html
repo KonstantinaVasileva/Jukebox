@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/comments-all.css">
+<head th:replace="~{fragments/common :: head}">
+</head>
+<body>
+<ul>
+    <li th:each="comment : ${reportedComments}" th:if="${comment.reported}"><span th:text="${comment.content}">Comment content</span>
+        <a th:href="@{/comments/delete/{id}(id=${comment.id})}">Delete</a>
+        <a th:href="@{/comments/unreport/{id}(id=${comment.id})}">Unreport</a>
+    </li>
+</ul>
+<a th:href="@{/home}">Home</a>
+</body>
+</html>

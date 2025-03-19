@@ -68,4 +68,12 @@ public class CommentService {
     public List<Comment> getReportedComments() {
         return commentRepository.getAllByReported(true);
     }
+
+    public void unreportComment(UUID id) {
+        Comment comment = commentRepository.getCommentsById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+
+        comment.setReported(false);
+        commentRepository.save(comment);
+    }
 }

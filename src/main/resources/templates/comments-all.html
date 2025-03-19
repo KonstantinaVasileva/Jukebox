@@ -9,13 +9,16 @@
 <h2>Comments</h2>
 <ul>
     <li th:each="comment : ${comments}" th:unless="${comment.deleted}"><span th:text="${comment.content}">Comment content</span>
-        <a th:if="${loggedInUser.role.name() == 'ADMIN' or loggedInUser.id == comment.author.id}"
+        <a class="delete" th:if="${loggedInUser.role.name() == 'ADMIN' or loggedInUser.id == comment.author.id}"
            th:href="@{/comments/delete/{id}(id=${comment.id})}">Delete</a>
-        <a th:if="${loggedInUser.role.name() == 'MODERATOR'}"
+        <a class="report-to-admin" th:if="${loggedInUser.role.name() == 'MODERATOR'
+        && comment.author.role.name() != 'ADMIN'
+        && comment.reported == false}"
            th:href="@{/comments/report/{id}(id=${comment.id})}">Report to ADMIN</a>
-        <td th:if="${loggedInUser.role.name() == 'MODERATOR'
+        <a class="reported-comments" th:if="${(loggedInUser.role.name() == 'MODERATOR'
         or loggedInUser.role.name() == 'ADMIN'
-        or loggedInUser.id == comment.author.id}">Reported</td>
+        or loggedInUser.id == comment.author.id)
+        && comment.reported == true}">Reported</a>
     </li>
 </ul>
 <a th:href="@{/comments/add/{id}(id=${band.id})}">Add Comment</a>

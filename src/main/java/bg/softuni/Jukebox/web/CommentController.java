@@ -83,11 +83,23 @@ public class CommentController {
     }
 
     @GetMapping("/report/{id}")
-    public String report(@PathVariable UUID id, Model model) {
+    public String report(@PathVariable UUID id) {
         UUID bandId = commentService.getBandIdByCommentId(id);
         commentService.reportComment(id);
+
+        return "redirect:/comments/" + bandId;
+    }
+
+    @GetMapping("/report/all")
+    public String reportAll(Model model) {
         List<Comment> reportedComments = commentService.getReportedComments();
         model.addAttribute("reportedComments", reportedComments);
-        return "redirect:/comments/" + bandId;
+        return "reported-comments";
+    }
+
+    @GetMapping("/unreport/{id}")
+    public String unreportComment(@PathVariable UUID id) {
+        commentService.unreportComment(id);
+        return "redirect:/comments/report/all";
     }
 }
