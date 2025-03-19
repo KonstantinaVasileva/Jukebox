@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/users-all.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>User Management</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Banned</th>
+            <th>Role</th>
+            <th>Deleted Comments</th>
+            <th>Reported Comments</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+
+            <td>
+                <form method="post" th:action="@{/admin/users/ban}">
+                    <input type="hidden" name="userId" th:value="${user.id}">
+                    <button type="submit" th:text="${user.banned ? 'Unban' : 'Ban'}"
+                            th:classappend="${user.banned ? 'btn-unban' : 'btn-ban'}">
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <form method="post" th:action="@{/admin/users/role}">
+                    <input type="hidden" name="userId" th:value="${user.id}">
+                    <select name="role">
+                        <option th:each="role : ${roles}" th:value="${role}" th:text="${role}" th:selected="${role == user.role}"></option>
+                    </select>
+                    <button type="submit" class="btn-update">Update</button>
+                </form>
+            </td>
+
+            <td th:text="${user.deletedCommentsCount}"></td>
+            <td th:text="${user.reportedCommentsCount}"></td>
+
+            <td>
+                <form method="post" th:action="@{/admin/users/delete}">
+                    <input type="hidden" name="userId" th:value="${user.id}">
+                    <button type="submit" class="btn-delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

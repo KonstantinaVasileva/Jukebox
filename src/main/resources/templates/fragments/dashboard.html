@@ -35,7 +35,7 @@
     </section>
     <ul id="results">
     </ul>
-    <form th:action="@{/users}">
+    <form th:action="@{/users/all}">
         <button th:if="${user.role.name == 'ADMIN'}" class="all-users-btn">All Users</button>
     </form>
 
