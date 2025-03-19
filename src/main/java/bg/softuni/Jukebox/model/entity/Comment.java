@@ -22,6 +22,7 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime createdOn;
+    private boolean reported;
     private boolean deleted;
     @ManyToOne
     private User author;

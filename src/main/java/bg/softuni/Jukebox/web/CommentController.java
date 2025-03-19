@@ -76,10 +76,18 @@ public class CommentController {
 
     @PreAuthorize("@commentSecurityService.isOwnerOrAdmin(#id, authentication)")
     @GetMapping("/delete/{id}")
-    public String deleteComment(@PathVariable UUID id, Principal principal) {
+    public String deleteComment(@PathVariable UUID id) {
         UUID bandId = commentService.getBandIdByCommentId(id);
-        commentService.setCommentToDelete(id, principal);
+        commentService.setCommentToDelete(id);
         return "redirect:/comments/" + bandId;
     }
 
+    @GetMapping("/report/{id}")
+    public String report(@PathVariable UUID id, Model model) {
+        UUID bandId = commentService.getBandIdByCommentId(id);
+        commentService.reportComment(id);
+        List<Comment> reportedComments = commentService.getReportedComments();
+        model.addAttribute("reportedComments", reportedComments);
+        return "redirect:/comments/" + bandId;
+    }
 }

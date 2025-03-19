@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="/css/comment-add.css">
 <head th:replace="~{fragments/common :: head}"></head>
 <body>
-
 <form
         th:action="@{/comments/add/{id}(id=${band.id})}"
         th:method="post"
         th:object="${addComment}"
         id="comment">
     <h1 style="margin-bottom: 15px;">Add Comment</h1>
-    <textarea
-            rows="4"
-            cols="50"
-            name="comment"
-            form="comment"
-            placeholder="Enter your comment"
-            th:field="*{content}"></textarea>
+    <label>
+<textarea
+        rows="4"
+        cols="50"
+        name="comment"
+        form="comment"
+        placeholder="Enter your comment"
+        th:field="*{content}"></textarea>
+    </label>
     <button type="submit">Submit</button>
 </form>
 

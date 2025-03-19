@@ -40,7 +40,7 @@ public class CommentService {
         return commentRepository.findByBand_IdOrderByCreatedOn(bandId);
     }
 
-    public void setCommentToDelete(UUID id, Principal principal) {
+    public void setCommentToDelete(UUID id) {
         Comment comment = commentRepository.getCommentsById(id)
                 .orElseThrow(() -> new RuntimeException("Comment not found"));
 
@@ -55,5 +55,17 @@ public class CommentService {
 
     public List<Comment> getNonDeletedCommentsByUser(UUID userId) {
         return commentRepository.findByAuthor_IdAndDeletedIs(userId, false);
+    }
+
+    public void reportComment(UUID id) {
+        Comment comment = commentRepository.getCommentsById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+
+        comment.setReported(true);
+        commentRepository.save(comment);
+    }
+
+    public List<Comment> getReportedComments() {
+        return commentRepository.getAllByReported(true);
     }
 }
