@@ -1,6 +1,5 @@
-package bg.softuni.Jukebox.repository;
+package bg.softuni.Jukebox.user;
 
-import bg.softuni.Jukebox.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

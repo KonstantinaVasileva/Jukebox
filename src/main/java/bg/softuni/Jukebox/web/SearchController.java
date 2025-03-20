@@ -1,12 +1,12 @@
 package bg.softuni.Jukebox.web;
 
-import bg.softuni.Jukebox.model.entity.Album;
-import bg.softuni.Jukebox.model.entity.Band;
-import bg.softuni.Jukebox.model.entity.Song;
-import bg.softuni.Jukebox.service.AlbumService;
-import bg.softuni.Jukebox.service.BandService;
-import bg.softuni.Jukebox.service.GenreService;
-import bg.softuni.Jukebox.service.SongService;
+import bg.softuni.Jukebox.album.Album;
+import bg.softuni.Jukebox.band.Band;
+import bg.softuni.Jukebox.song.Song;
+import bg.softuni.Jukebox.album.AlbumService;
+import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.genre.GenreService;
+import bg.softuni.Jukebox.song.SongService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

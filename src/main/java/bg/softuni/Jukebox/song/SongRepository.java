@@ -1,6 +1,5 @@
-package bg.softuni.Jukebox.repository;
+package bg.softuni.Jukebox.song;
 
-import bg.softuni.Jukebox.model.entity.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

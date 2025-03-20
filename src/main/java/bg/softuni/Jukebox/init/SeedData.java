@@ -1,9 +1,9 @@
 package bg.softuni.Jukebox.init;
 
-import bg.softuni.Jukebox.service.AlbumService;
-import bg.softuni.Jukebox.service.BandService;
-import bg.softuni.Jukebox.service.GenreService;
-import bg.softuni.Jukebox.service.SongService;
+import bg.softuni.Jukebox.album.AlbumService;
+import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.genre.GenreService;
+import bg.softuni.Jukebox.song.SongService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

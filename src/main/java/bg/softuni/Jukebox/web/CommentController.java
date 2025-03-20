@@ -1,12 +1,12 @@
 package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.web.dto.CommentForm;
-import bg.softuni.Jukebox.model.entity.Band;
-import bg.softuni.Jukebox.model.entity.Comment;
-import bg.softuni.Jukebox.model.entity.User;
-import bg.softuni.Jukebox.service.BandService;
-import bg.softuni.Jukebox.service.CommentService;
-import bg.softuni.Jukebox.service.UserService;
+import bg.softuni.Jukebox.band.Band;
+import bg.softuni.Jukebox.comment.Comment;
+import bg.softuni.Jukebox.user.User;
+import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.comment.CommentService;
+import bg.softuni.Jukebox.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

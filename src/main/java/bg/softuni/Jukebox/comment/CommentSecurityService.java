@@ -1,7 +1,5 @@
-package bg.softuni.Jukebox.service;
+package bg.softuni.Jukebox.comment;
 
-import bg.softuni.Jukebox.model.entity.Comment;
-import bg.softuni.Jukebox.repository.CommentRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 

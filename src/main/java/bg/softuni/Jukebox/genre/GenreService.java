@@ -1,10 +1,7 @@
-package bg.softuni.Jukebox.service;
+package bg.softuni.Jukebox.genre;
 
 import bg.softuni.Jukebox.web.dto.GenreSeed;
-import bg.softuni.Jukebox.model.entity.Band;
-import bg.softuni.Jukebox.model.entity.Genre;
-import bg.softuni.Jukebox.model.entity.GenreType;
-import bg.softuni.Jukebox.repository.GenreRepository;
+import bg.softuni.Jukebox.band.Band;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

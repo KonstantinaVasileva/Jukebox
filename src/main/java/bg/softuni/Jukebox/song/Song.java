@@ -1,5 +1,8 @@
-package bg.softuni.Jukebox.model.entity;
+package bg.softuni.Jukebox.song;
 
+import bg.softuni.Jukebox.album.Album;
+import bg.softuni.Jukebox.band.Band;
+import bg.softuni.Jukebox.genre.GenreType;
 import jakarta.persistence.*;
 import lombok.*;
 

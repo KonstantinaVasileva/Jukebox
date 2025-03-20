@@ -1,5 +1,6 @@
-package bg.softuni.Jukebox.model.entity;
+package bg.softuni.Jukebox.user;
 
+import bg.softuni.Jukebox.comment.Comment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

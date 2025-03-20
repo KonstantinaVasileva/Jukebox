@@ -1,9 +1,8 @@
 package bg.softuni.Jukebox.web.dto;
 
-import bg.softuni.Jukebox.model.entity.Role;
+import bg.softuni.Jukebox.user.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 

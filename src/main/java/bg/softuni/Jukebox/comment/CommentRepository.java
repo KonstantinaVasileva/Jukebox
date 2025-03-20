@@ -1,6 +1,5 @@
-package bg.softuni.Jukebox.repository;
+package bg.softuni.Jukebox.comment;
 
-import bg.softuni.Jukebox.model.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +16,6 @@ public interface CommentRepository extends JpaRepository<Comment, UUID> {
     List<Comment> findByAuthor_IdAndDeletedIs(UUID authorId, boolean deleted);
 
     List<Comment> getAllByReported(boolean reported);
+
+    List<Comment> getAllByAuthor_IdAndDeleted(UUID authorId, boolean deleted);
 }

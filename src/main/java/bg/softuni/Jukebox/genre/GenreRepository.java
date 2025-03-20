@@ -1,7 +1,5 @@
-package bg.softuni.Jukebox.repository;
+package bg.softuni.Jukebox.genre;
 
-import bg.softuni.Jukebox.model.entity.Genre;
-import bg.softuni.Jukebox.model.entity.GenreType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

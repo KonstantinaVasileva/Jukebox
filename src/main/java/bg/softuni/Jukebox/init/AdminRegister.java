@@ -1,8 +1,8 @@
 package bg.softuni.Jukebox.init;
 
-import bg.softuni.Jukebox.model.entity.Role;
-import bg.softuni.Jukebox.repository.UserRepository;
-import bg.softuni.Jukebox.service.UserService;
+import bg.softuni.Jukebox.user.Role;
+import bg.softuni.Jukebox.user.UserRepository;
+import bg.softuni.Jukebox.user.UserService;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

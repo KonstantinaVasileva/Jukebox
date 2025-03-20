@@ -1,5 +1,6 @@
 package bg.softuni.Jukebox.model.entity;
 
+import bg.softuni.Jukebox.band.Band;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

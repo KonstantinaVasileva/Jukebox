@@ -1,7 +1,7 @@
-package bg.softuni.Jukebox.service;
+package bg.softuni.Jukebox.song;
 
-import bg.softuni.Jukebox.model.entity.Song;
-import bg.softuni.Jukebox.repository.SongRepository;
+import bg.softuni.Jukebox.album.AlbumService;
+import bg.softuni.Jukebox.band.BandService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

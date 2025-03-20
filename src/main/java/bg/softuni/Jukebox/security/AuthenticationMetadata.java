@@ -1,6 +1,6 @@
 package bg.softuni.Jukebox.security;
 
-import bg.softuni.Jukebox.model.entity.Role;
+import bg.softuni.Jukebox.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

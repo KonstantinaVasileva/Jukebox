@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
                         .requestMatchers("/css/**", "/img/**", "/fragments/**").permitAll()
                         .requestMatchers("/", "/register", "/register/terms-and-privacy").permitAll()
                         .requestMatchers("/albums/add", "/songs/add").hasAnyRole("ARTIST", "ADMIN")
-                        .requestMatchers("/users", "/comments/reported").hasAnyRole("ADMIN")
+                        .requestMatchers("/users/all", "/comments/delete/").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login

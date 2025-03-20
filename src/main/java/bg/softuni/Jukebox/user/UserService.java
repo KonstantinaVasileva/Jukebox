@@ -1,12 +1,10 @@
-package bg.softuni.Jukebox.service;
+package bg.softuni.Jukebox.user;
 
 //import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
-import bg.softuni.Jukebox.model.entity.Role;
-import bg.softuni.Jukebox.model.entity.User;
-import bg.softuni.Jukebox.repository.UserRepository;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
+import bg.softuni.Jukebox.web.dto.SwitchUserRole;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -62,10 +60,10 @@ public class UserService implements UserDetailsService {
                 new UsernameNotFoundException("User with username " + username + " not found!"));
     }
 
-    public boolean isBannedUser() {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Optional<User> byUsername = userRepository.findByUsername(userDetails.getUsername());
-        return byUsername.get().isBanned();
+    public void switchBan(UUID id) {
+        User byId = userRepository.findById(id).orElseThrow(()->new UsernameNotFoundException("User with id " + id + " not found!"));
+        byId.setBanned(!byId.isBanned());
+        userRepository.save(byId);
     }
 
     public User findById(UUID id) {
@@ -74,5 +72,11 @@ public class UserService implements UserDetailsService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public void switchRole(UUID id, SwitchUserRole switchUserRole) {
+        User byId = userRepository.findById(id).orElseThrow(()->new UsernameNotFoundException("User with id " + id + " not found!"));
+        byId.setRole(switchUserRole.getRole());
+        userRepository.save(byId);
     }
 }
