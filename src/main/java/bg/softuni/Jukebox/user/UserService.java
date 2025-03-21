@@ -49,7 +49,7 @@ public class UserService implements UserDetailsService {
     public void register(RegisterUserRequest registerUserRequest) {
         User user = modelMapper.map(registerUserRequest, User.class);
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
-        if (user.getRole() != Role.ADMIN) {
+        if (user.getRole() == null) {
             user.setRole(Role.USER);
         }
         userRepository.save(user);

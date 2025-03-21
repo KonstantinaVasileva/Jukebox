@@ -17,6 +17,9 @@
                 <ul class="songs">
                     <li th:each="song : ${album.songs}" th:text="${song.title}"></li>
                 </ul>
+                <section th:if="${album.songs == null}">
+                    <p>No details available.</p>
+                </section>
             </li>
         </ul>
         <div class="button-container">
@@ -31,12 +34,7 @@
             </div>
         </div>
     </section>
-
-        <section th:if="${band == null && album == null && song == null}">
-            <p>No details available.</p>
-        </section>
 </main>
-<script th:src="@{/js/band_details}"></script>
-
+<script th:src="@{/js/band_details.js}"></script>
 </body>
 </html>
