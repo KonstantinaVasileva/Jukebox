@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, UUID> {
+
     List<Comment> findByBand_IdOrderByCreatedOn(UUID bandId);
 
     Optional<Comment> getCommentsById(UUID id);

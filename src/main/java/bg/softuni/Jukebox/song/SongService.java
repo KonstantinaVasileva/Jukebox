@@ -35,6 +35,7 @@ public class SongService {
 
     public void seed() {
         if (songRepository.count() == 0) {
+
             List<Song> songs = new ArrayList<>();
             songs.add(Song.builder()
                     .title("Mountain Music")

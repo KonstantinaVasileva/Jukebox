@@ -19,14 +19,20 @@ public class Band {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false, unique = true)
     private String name;
+
     private int formed;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
     private String image;
+
     @ManyToOne
     private Genre genre;
+
     @OneToMany(mappedBy = "band")
     private Set<Album> albums;
 }

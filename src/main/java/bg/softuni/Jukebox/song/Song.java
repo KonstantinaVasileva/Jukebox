@@ -20,12 +20,17 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private String title;
+
     private LocalDate releaseDate;
+
     @Enumerated(EnumType.STRING)
     private GenreType genre;
+
     @ManyToOne
     private Album album;
+
     @ManyToOne
     private Band band;
 

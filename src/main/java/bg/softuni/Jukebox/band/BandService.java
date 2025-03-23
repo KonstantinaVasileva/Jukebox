@@ -1,5 +1,6 @@
 package bg.softuni.Jukebox.band;
 
+import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import bg.softuni.Jukebox.genre.GenreService;
 import bg.softuni.Jukebox.web.dto.BandSeed;
 import bg.softuni.Jukebox.genre.Genre;
@@ -28,6 +29,7 @@ public class BandService {
     }
 
     public void seed() throws FileNotFoundException {
+
         if (bandRepository.count() == 0) {
             String fileName = "src/main/resources/files/band.json";
             BandSeed[] bandSeeds = gson.fromJson(new FileReader(fileName), BandSeed[].class);
@@ -41,9 +43,10 @@ public class BandService {
     }
 
     public List<Band> findBandBySearch(String name) {
+
         List<Band> band = bandRepository.findByNameContainingIgnoreCase(name);
         if (band.isEmpty()) {
-            //TODO
+            throw new SearchNotFoundException("Not found " + name + " album.");
         }
         return band;
     }
@@ -53,7 +56,7 @@ public class BandService {
     }
 
     public Band findById(UUID id) {
-        return bandRepository.findById(id).orElse(null);
+        return bandRepository.findById(id).orElseThrow(()-> new RuntimeException("Album not found"));
     }
 
     public Band findByName(String name) {

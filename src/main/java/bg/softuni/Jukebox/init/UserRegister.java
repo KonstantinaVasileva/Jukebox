@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserRegister implements CommandLineRunner {
+
     private final UserRepository userRepository;
     private final UserService userService;
 
@@ -20,7 +21,7 @@ public class UserRegister implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if(userRepository.count() == 0) {
+        if (userRepository.count() == 0) {
             registerData("admin", "admin", "admin@admin", Role.ADMIN);
             registerData("moderator", "moderator", "moderator@moderator", Role.MODERATOR);
             registerData("artist", "artist", "artist@artist", Role.ARTIST);

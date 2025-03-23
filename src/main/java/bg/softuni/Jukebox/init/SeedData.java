@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SeedData implements CommandLineRunner {
+
     private final GenreService genreService;
     private final BandService bandService;
     private final AlbumService albumService;

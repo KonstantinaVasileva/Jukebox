@@ -73,6 +73,7 @@ public class CommentService {
     }
 
     public void unreportComment(UUID id) {
+
         Comment comment = commentRepository.getCommentsById(id)
                 .orElseThrow(() -> new RuntimeException("Comment not found"));
 
@@ -81,6 +82,7 @@ public class CommentService {
     }
 
     public Map<UUID, Integer> getDeletedComments() {
+
         List<User> allUsers = userService.getAllUsers();
         Map<UUID, Integer> deletedCommentsCount = new HashMap<>();
         for (User user : allUsers) {
@@ -88,6 +90,6 @@ public class CommentService {
             int count = commentRepository.getAllByAuthor_IdAndDeleted(id, true).size();
             deletedCommentsCount.put(id, count);
         }
-         return deletedCommentsCount;
+        return deletedCommentsCount;
     }
 }

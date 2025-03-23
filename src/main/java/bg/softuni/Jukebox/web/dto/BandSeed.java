@@ -9,12 +9,16 @@ import lombok.Setter;
 public class BandSeed {
     @Expose
     private String name;
+
     @Expose
     private int formed;
+
     @Expose
     private String description;
+
     @Expose
     private String image;
+
     @Expose
     private String genre;
 }

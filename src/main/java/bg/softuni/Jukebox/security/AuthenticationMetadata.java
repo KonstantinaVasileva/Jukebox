@@ -23,6 +23,7 @@ public class AuthenticationMetadata implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ROLE_" + role.name());
         return List.of(grantedAuthority);
     }

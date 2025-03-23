@@ -18,10 +18,13 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Enumerated(EnumType.STRING)
     private GenreType name;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
     @OneToMany(mappedBy = "genre")
     private List<Band> bands;
 }

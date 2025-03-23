@@ -11,6 +11,7 @@ import lombok.Setter;
 public class GenreSeed {
     @Expose
     private String name;
+
     @Expose
     private String description;
 }

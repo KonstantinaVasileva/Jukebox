@@ -5,5 +5,6 @@ import lombok.Data;
 
 @Data
 public class SwitchUserRole {
+
     private Role role;
 }

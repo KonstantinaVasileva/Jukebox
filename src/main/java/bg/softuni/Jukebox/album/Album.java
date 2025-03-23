@@ -18,15 +18,18 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false)
     private String title;
+
     private int releaseDate;
+
     private String description;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private Band band;
+
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
-
-
 }

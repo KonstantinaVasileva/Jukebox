@@ -1,6 +1,7 @@
 package bg.softuni.Jukebox.album;
 
 import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Service
 public class AlbumService {
+
     private final AlbumRepository albumRepository;
     private final BandService bandService;
 
@@ -20,7 +22,7 @@ public class AlbumService {
     public List<Album> findAlbumBySearch(String title) {
         List<Album> albums = albumRepository.findByTitleContainingIgnoreCase(title);
         if (albums.isEmpty()) {
-            //TODO EXCEPTION
+            throw new SearchNotFoundException("Not found " + title + " album.");
         }
         return albums;
     }
@@ -54,8 +56,6 @@ public class AlbumService {
                     .band(bandService.findByName("Alabama")).build());
 
             albumRepository.saveAll(albums);
-
-
         }
     }
 }

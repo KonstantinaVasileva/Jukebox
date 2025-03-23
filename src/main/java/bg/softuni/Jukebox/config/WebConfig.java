@@ -15,6 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/css/**", "/img/**", "/fragments/**").permitAll()
@@ -35,5 +36,4 @@ public class WebConfig implements WebMvcConfigurer {
                 );
         return http.build();
     }
-
 }

@@ -15,18 +15,25 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false)
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
     private boolean banned;
+
     @OneToMany(mappedBy = "author")
     private List<Comment> comments;
 }

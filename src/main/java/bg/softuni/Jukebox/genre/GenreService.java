@@ -1,5 +1,6 @@
 package bg.softuni.Jukebox.genre;
 
+import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import bg.softuni.Jukebox.web.dto.GenreSeed;
 import bg.softuni.Jukebox.band.Band;
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class GenreService {
     public Genre findGenreByName(String name) {
         Optional<Genre> genre = genreRepository.findByName(GenreType.valueOf(name));
         if (genre.isEmpty()) {
-            //TODO Exceptions
+            throw new SearchNotFoundException("Not found " + name + " genre.");
         }
         return genre.get();
     }
