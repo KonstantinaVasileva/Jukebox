@@ -1,14 +1,11 @@
 package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.comment.CommentService;
-import bg.softuni.Jukebox.user.Role;
 import bg.softuni.Jukebox.user.User;
 import bg.softuni.Jukebox.user.UserService;
 import bg.softuni.Jukebox.web.dto.SwitchUserRole;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

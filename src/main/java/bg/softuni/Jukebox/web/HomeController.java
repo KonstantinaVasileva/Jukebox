@@ -1,6 +1,8 @@
 package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.comment.Comment;
+import bg.softuni.Jukebox.notification.client.dto.Notification;
+import bg.softuni.Jukebox.notification.service.NotificationService;
 import bg.softuni.Jukebox.user.User;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
 import bg.softuni.Jukebox.comment.CommentService;
@@ -27,10 +29,12 @@ public class HomeController {
 
     private final UserService userService;
     private final CommentService commentService;
+    private final NotificationService notificationService;
 
-    public HomeController(UserService userService, CommentService commentService) {
+    public HomeController(UserService userService, CommentService commentService, NotificationService notificationService) {
         this.userService = userService;
         this.commentService = commentService;
+        this.notificationService = notificationService;
     }
 
     @ModelAttribute("registerUserRequest")
@@ -68,7 +72,8 @@ public class HomeController {
     @PostMapping("/register")
     public String register(@Valid RegisterUserRequest registerUserRequest,
                            BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
+                           RedirectAttributes redirectAttributes,
+                           Model model) {
 
         if (registerUserRequest.getPassword() != null &&
                 !registerUserRequest.getPassword().equals(registerUserRequest.getRepeatPassword())) {
@@ -83,7 +88,8 @@ public class HomeController {
                     "org.springframework.validation.BindingResult.registerUserRequest", bindingResult);
             return "redirect:/register";
         }
-        userService.register(registerUserRequest);
+        Notification notification = userService.register(registerUserRequest);
+        model.addAttribute("notification", notification);
         return "redirect:/login";
     }
 

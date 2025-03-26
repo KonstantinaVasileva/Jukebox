@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.notifications-container, .notification-details {
+    max-width: 600px;
+    margin: auto;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.notifications-list {
+    list-style: none;
+    padding: 0;
+}
+
+.notification {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unread {
+    background-color: #ff5252;
+}
+
+.read {
+    background-color: #2e7d32;
+    opacity: 0.7;
+}
+
+.notification a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.notification a:hover {
+    text-decoration: underline;
+}
+
+.status {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.back-btn {
+    background-color: #ffffff;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #ddd;
+}

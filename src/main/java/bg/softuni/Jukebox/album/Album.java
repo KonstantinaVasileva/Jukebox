@@ -24,6 +24,7 @@ public class Album {
 
     private int releaseDate;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @ManyToOne

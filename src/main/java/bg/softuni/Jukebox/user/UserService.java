@@ -1,6 +1,8 @@
 package bg.softuni.Jukebox.user;
 
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
+import bg.softuni.Jukebox.notification.client.dto.Notification;
+import bg.softuni.Jukebox.notification.service.NotificationService;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
 import bg.softuni.Jukebox.web.dto.SwitchUserRole;
@@ -20,11 +22,13 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
+    private final NotificationService notificationService;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, NotificationService notificationService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.notificationService = notificationService;
     }
 
     public void validateUserRegistration(RegisterUserRequest registerUserRequest) {
@@ -43,7 +47,7 @@ public class UserService implements UserDetailsService {
         return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isBanned());
     }
 
-    public void register(RegisterUserRequest registerUserRequest) {
+    public Notification register(RegisterUserRequest registerUserRequest) {
 
         User user = modelMapper.map(registerUserRequest, User.class);
         user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
@@ -53,6 +57,8 @@ public class UserService implements UserDetailsService {
         }
 
         userRepository.save(user);
+
+        return notificationService.sendWelcomeNotification(registerUserRequest);
     }
 
     public User findByUsername(String username) {

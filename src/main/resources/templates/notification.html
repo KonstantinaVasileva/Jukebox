@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/notifications.css}">
+<head th:replace="~{fragments/common::head}">
+</head>
+<body>
+<style>
+    body {
+        background-image: url("/img/notification-background.jpg");
+    }
+</style>
+<main class="notifications-container">
+    <h2>Notification</h2>
+
+    <h3 th:text="${notification.title}">Notification Title</h3>
+    <p th:text="${notification.body}">Notification Body</p>
+
+    <form th:action="@{/notifications/read/{id}(id=${notification.id})}" method="post">
+        <button type="submit" class="mark-read-btn">Mark as Read</button>
+    </form>
+
+    <form th:action="@{/notifications/all/{id}(id=${user.id})}" method="post">
+        <button type="submit" class="mark-read-btn">Back</button>
+    </form>
+
+</main>
+
+</body>
+</html>
