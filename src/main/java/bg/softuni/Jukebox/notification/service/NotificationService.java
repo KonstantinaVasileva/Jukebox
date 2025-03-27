@@ -39,7 +39,7 @@ public class NotificationService {
 
         ResponseEntity<Notification> httpResponse = null;
 
-        try{
+        try {
             httpResponse = notificationClient.sendNotification(notificationRequest);
             if (!httpResponse.getStatusCode().is2xxSuccessful()) {
                 log.error(Objects.requireNonNull(httpResponse.getBody()).toString());
@@ -53,19 +53,38 @@ public class NotificationService {
 
     public List<Notification> getAllNotification(UUID id) {
         ResponseEntity<List<Notification>> listResponseEntity = null;
-
-        try{
+        try {
             listResponseEntity = notificationClient.allNotification(id);
             if (!listResponseEntity.getStatusCode().is2xxSuccessful()) {
                 log.error(Objects.requireNonNull(listResponseEntity.getBody()).toString());
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.warn(e.getMessage());
         }
-        return Objects.requireNonNull(listResponseEntity).getBody();
+        return listResponseEntity.getBody();
     }
 
-    public Notification getNotification(UUID id) {
-        return notificationClient.getNotification(id);
+    public Notification getNotification(UUID id, UUID userId) {
+        return
+                getAllNotification(userId).stream()
+                        .filter(n -> n.getId().equals(id))
+                        .findFirst().orElseThrow(() -> new RuntimeException("Notification not found"));
+    }
+
+    public User getUser(UUID userId) {
+        return userService.findById(userId);
+    }
+
+    public Notification readNotification(UUID id) {
+        ResponseEntity<Notification> responseEntity = null;
+        try {
+            responseEntity = notificationClient.readNotification(id);
+            if (!responseEntity.getStatusCode().is2xxSuccessful()) {
+                throw new RuntimeException("Failed to read notification");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error reading notification", e);
+        }
+        return Objects.requireNonNull(responseEntity).getBody();
     }
 }

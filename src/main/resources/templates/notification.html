@@ -15,15 +15,16 @@
     <h3 th:text="${notification.title}">Notification Title</h3>
     <p th:text="${notification.body}">Notification Body</p>
 
-    <form th:action="@{/notifications/read/{id}(id=${notification.id})}" method="post">
-        <button type="submit" class="mark-read-btn">Mark as Read</button>
-    </form>
+    <div class="button-container">
+        <form th:unless="${notification.readed}" th:action="@{/notifications/read/{id}(id=${notification.id})}"
+              th:method="get">
+            <button type="submit" class="mark-read-btn">Mark as Read</button>
+        </form>
 
-    <form th:action="@{/notifications/all/{id}(id=${user.id})}" method="post">
-        <button type="submit" class="mark-read-btn">Back</button>
-    </form>
-
+        <form th:action="@{/notifications/all/{id}(id=${user.id})}" th:method="get">
+            <button type="submit" class="back-btn" th:unless="${notification.readed}">Back</button>
+        </form>
+    </div>
 </main>
-
 </body>
 </html>

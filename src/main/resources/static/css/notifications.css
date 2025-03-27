@@ -54,15 +54,40 @@ body {
     font-weight: bold;
 }
 
-.back-btn {
-    background-color: #ffffff;
-    color: #333;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-weight: bold;
+.button-container {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    justify-content: center; /* Center align */
+    margin-top: 20px; /* Add some space above */
+}
+
+.mark-read-btn, .back-btn {
+    padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.mark-read-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mark-read-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.back-btn {
+    background-color: #007BFF;
+    color: white;
 }
 
 .back-btn:hover {
-    background-color: #ddd;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
+

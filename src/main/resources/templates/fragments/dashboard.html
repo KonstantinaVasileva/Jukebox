@@ -43,7 +43,7 @@
         <button th:if="${user.role.name == 'ADMIN'}" class="reported-comments-btn">Reported comments</button>
     </form>
 
-    <form th:action="@{/notifications/all/{id} (id = ${user.id})}">
+    <form th:action="@{/notifications/all/{id}(id = ${user.id})}">
         <button th:if="${user.role.name != 'ADMIN'}" class="reported-comments-btn">Notifications</button>
     </form>
 

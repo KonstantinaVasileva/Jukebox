@@ -20,6 +20,6 @@ public interface NotificationClient {
     @GetMapping("/all/{id}")
     ResponseEntity<List<Notification>> allNotification(@PathVariable UUID id);
 
-    @GetMapping("/{id}")
-    Notification getNotification(@PathVariable UUID id);
+    @GetMapping("/read/{id}")
+    ResponseEntity<Notification> readNotification(@PathVariable UUID id);
 }
