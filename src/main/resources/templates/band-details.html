@@ -28,6 +28,9 @@
                     <a th:href="@{/comments/{id}(id=${band.id})}">Comments</a>
                 </button>
             </div>
+            <div th:action="@{/artist/add/album}">
+                <button th:if="${user.role.name == 'ARTIST'}" class="reported-comments-btn">Add album</button>
+            </div>
             <div class="back">
                 <button type="button">
                     <a th:href="@{/home}">Back</a></button>

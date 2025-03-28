@@ -51,4 +51,10 @@ public class UserController {
         userService.switchRole(id, switchUserRole);
         return "redirect:/users/all";
     }
+
+    @DeleteMapping("/{id}/delete")
+    public String deleteUser(@PathVariable UUID id) {
+        userService.deleteUser(id);
+        return "redirect:/users/all";
+    }
 }

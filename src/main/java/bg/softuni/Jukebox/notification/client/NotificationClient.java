@@ -22,4 +22,7 @@ public interface NotificationClient {
 
     @GetMapping("/read/{id}")
     ResponseEntity<Notification> readNotification(@PathVariable UUID id);
+
+    @GetMapping("/error-status/{id}")
+    ResponseEntity<List<Notification>> errorStatus(@PathVariable UUID id);
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/notifications.css}">
+<head th:replace="~{fragments/common::head}">
+</head>
+<body>
+<style>
+  body {
+    background-image: url("/img/notification-background.jpg");
+  }
+</style>
+<main class="notifications-container">
+  <h1>Notifications</h1>
+
+  <ul class="notifications-list">
+    <li th:each="notification : ${errorStatusNotificationByUser}"
+        th:class="${notification.readed} ? 'notification read' : 'notification unread'">
+
+      <a th:text="${notification.title}"
+         th:href="@{/notifications/{id}(id=${notification.id})}"></a>
+
+      <span class="status" th:text="${notification.readed} ? '✔ Read' : '🔴 Unread'"></span>
+    </li>
+  </ul>
+</main>
+</body>
+</html>

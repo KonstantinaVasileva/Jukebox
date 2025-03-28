@@ -8,7 +8,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -49,5 +48,12 @@ public class NotificationController {
         Notification notification = notificationService.readNotification(id);
         model.addAttribute("notification", notification);
         return "redirect:/notifications/" + id;
+    }
+
+    @GetMapping("/error-status/{id}")
+    public String getErrorStatusNotification(@PathVariable UUID id, Model model) {
+        List<Notification> errorStatusNotificationByUser = notificationService.getErrorStatusNotificationByUser(id);
+        model.addAttribute("errorStatusNotificationByUser", errorStatusNotificationByUser);
+        return "error-status";
     }
 }

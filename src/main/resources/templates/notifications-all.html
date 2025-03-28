@@ -22,6 +22,9 @@
             <span class="status" th:text="${notification.readed} ? '✔ Read' : '🔴 Unread'"></span>
         </li>
     </ul>
+    <form th:action="@{/home}" th:method="get">
+        <button type="submit" class="back-btn">Back</button>
+    </form>
 </main>
 </body>
 </html>

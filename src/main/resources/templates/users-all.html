@@ -51,7 +51,7 @@
             <td th:text="${deletedComments.get(user.id)}"></td>
 
             <td>
-                <form method="post" th:action="@{/admin/users/delete}">
+                <form th:method="delete" th:action="@{/users/{id}/delete(id=${user.id})}">
                     <input type="hidden" name="userId" th:value="${user.id}">
                     <button type="submit" class="btn-delete">Delete</button>
                 </form>

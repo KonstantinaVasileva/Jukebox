@@ -89,4 +89,9 @@ public class UserService implements UserDetailsService {
         byId.setRole(switchUserRole.getRole());
         userRepository.save(byId);
     }
+
+    public void deleteUser(UUID id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " not found!"));
+        userRepository.delete(user);
+    }
 }
