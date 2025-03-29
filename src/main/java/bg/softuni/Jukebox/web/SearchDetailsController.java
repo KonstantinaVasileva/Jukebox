@@ -2,11 +2,14 @@ package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.album.Album;
 import bg.softuni.Jukebox.band.Band;
+import bg.softuni.Jukebox.security.AuthenticationMetadata;
 import bg.softuni.Jukebox.song.Song;
 import bg.softuni.Jukebox.album.AlbumService;
 import bg.softuni.Jukebox.band.BandService;
 import bg.softuni.Jukebox.song.SongService;
+import bg.softuni.Jukebox.user.Role;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +34,7 @@ public class SearchDetailsController {
     }
 
     @GetMapping("/{id}")
-    public String getDetails(@PathVariable UUID id, Model model) {
+    public String getDetails(@PathVariable UUID id, Model model,@AuthenticationPrincipal AuthenticationMetadata authenticationMetadata) {
 
         Band band;
 
@@ -40,16 +43,15 @@ public class SearchDetailsController {
         } else if (albumService.existsById(id)) {
             Album album = albumService.findById(id);
             band = album.getBand();
-//            model.addAttribute("album", album);
-//            return  "album-details";
         } else if (songService.existsById(id)) {
             Song song = songService.findById(id);
             band = song.getBand();
-//            model.addAttribute("song", song);
-//            return  "song-details";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item not found");
         }
+
+        String role = authenticationMetadata.getRole().name();
+        model.addAttribute("role", role);
 
         model.addAttribute("band", band);
         return "band-details";

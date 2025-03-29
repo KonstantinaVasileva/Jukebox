@@ -44,7 +44,7 @@
     </form>
 
     <form th:action="@{/notifications/all/{id}(id = ${user.id})}">
-        <button th:if="${user.role.name != 'ADMIN'}" class="reported-comments-btn">Notifications</button>
+        <button th:if="${user.role.name != 'ADMIN'}" class="notification-btn">Notifications</button>
     </form>
 
     <form th:action="@{/logout}" method="get">

@@ -76,6 +76,7 @@ ul {
 }
 
 .comment button,
+.add-album a,
 .back button {
     background: #ffcc00;
     border: none;
@@ -88,12 +89,14 @@ ul {
 }
 
 .comment button a,
+.add-album a,
 .back button a {
     text-decoration: none;
     color: black;
 }
 
 .comment button:hover,
+.add-album a:hover,
 .back button:hover {
     background: #ffd700;
 }

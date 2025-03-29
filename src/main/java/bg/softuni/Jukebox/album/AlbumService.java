@@ -2,6 +2,7 @@ package bg.softuni.Jukebox.album;
 
 import bg.softuni.Jukebox.band.BandService;
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
+import bg.softuni.Jukebox.web.dto.NewAlbum;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -57,5 +58,16 @@ public class AlbumService {
 
             albumRepository.saveAll(albums);
         }
+    }
+
+    public void addNewAlbum(NewAlbum newAlbum) {
+
+        Album album = Album.builder()
+                .title(newAlbum.getTitle())
+                .description(newAlbum.getDescription())
+                .releaseDate(newAlbum.getReleaseDate())
+                .build();
+
+        albumRepository.save(album);
     }
 }

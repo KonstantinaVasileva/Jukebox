@@ -57,7 +57,7 @@
     margin-top: 5px;
 }
 
-.logout-btn, .all-users-btn, .reported-comments-btn{
+.logout-btn, .all-users-btn, .reported-comments-btn, .notification-btn{
     background: #ff4d4d;
     color: white;
     border: none;
@@ -80,11 +80,11 @@
     background-color: #2a8c44;
 }
 
-.reported-comments-btn{
+.reported-comments-btn, .notification-btn{
     background-color: gold;
 }
 
-.reported-comments-btn:hover{
+.reported-comments-btn:hover, .notification-btn:hover{
     background: #b3941a;
 }
 

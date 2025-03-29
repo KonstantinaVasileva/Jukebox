@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="/css/album-add.css">
 <head th:replace="~{fragments/common :: head}">
 <body>
+<style class="background-image">
+    body{
+        background: url("/img/add-album.jpg") no-repeat fixed center;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+    }
+</style>
 <div class="form-container">
     <h2>Add New Album</h2>
     <form th:action="@{/add/album}" th:method="POST">
@@ -12,7 +21,7 @@
 
         <div class="form-group">
             <label for="releaseDate">Release Date:</label>
-            <input type="date" id="releaseDate" name="releaseDate" required>
+            <input type="number" id="releaseDate" name="releaseDate" required>
         </div>
 
         <div class="form-group">
