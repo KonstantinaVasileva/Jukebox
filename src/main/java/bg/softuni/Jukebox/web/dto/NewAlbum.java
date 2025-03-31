@@ -16,7 +16,6 @@ public class NewAlbum {
     @NotNull
     private String description;
 
-    @NotNull
     private Band band;
 
     public NewAlbum(Band band) {

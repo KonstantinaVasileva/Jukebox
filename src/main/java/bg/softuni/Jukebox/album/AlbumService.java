@@ -66,6 +66,7 @@ public class AlbumService {
                 .title(newAlbum.getTitle())
                 .description(newAlbum.getDescription())
                 .releaseDate(newAlbum.getReleaseDate())
+                .band(newAlbum.getBand())
                 .build();
 
         albumRepository.save(album);

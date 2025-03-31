@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/css/album-add.css">
 <head th:replace="~{fragments/common :: head}">
 <body>
@@ -13,20 +13,23 @@
 </style>
 <div class="form-container">
     <h2>Add New Album</h2>
-    <form th:action="@{/add/album}" th:method="POST">
+    <form th:action="@{/artist/{id}/add/album(id=${band.id})}" th:method="POST" th:object="${newAlbum}">
         <div class="form-group">
             <label for="title">Album Title:</label>
-            <input type="text" id="title" name="title" required>
+            <input type="text" placeholder="Title" id="title" name="title" th:field="*{title}" required>
         </div>
+        <span class="alert-danger"
+              th:if="${#fields.hasErrors()}"
+              th:errors="*{title}"></span>
 
         <div class="form-group">
             <label for="releaseDate">Release Date:</label>
-            <input type="number" id="releaseDate" name="releaseDate" required>
+            <input type="number" placeholder="Release Date" id="releaseDate" name="releaseDate" th:field="*{releaseDate}" required>
         </div>
 
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            <textarea id="description" placeholder="Description" name="description" rows="4" th:field="*{description}" required></textarea>
         </div>
 
         <button type="submit" class="btn-submit">Add Album</button>

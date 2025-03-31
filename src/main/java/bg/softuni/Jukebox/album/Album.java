@@ -28,7 +28,6 @@ public class Album {
     private String description;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Band band;
 
     @OneToMany(mappedBy = "album")

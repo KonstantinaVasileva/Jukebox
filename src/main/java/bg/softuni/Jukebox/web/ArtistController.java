@@ -30,6 +30,7 @@ public class ArtistController {
         NewAlbum newAlbum = new NewAlbum(band);
 
         model.addAttribute("newAlbum", newAlbum);
+        model.addAttribute("band", band);
 
         return "album-add";
     }
@@ -38,8 +39,12 @@ public class ArtistController {
     public String addAlbum(@PathVariable UUID id,
                            @Valid NewAlbum newAlbum,
                            BindingResult bindingResult) {
+
+        Band band = bandService.findById(id);
+        newAlbum.setBand(band);
+
         if (bindingResult.hasErrors()) {
-            return "album-add";
+            return "redirect:/artist/{id}/add/album";
         }
         albumService.addNewAlbum(newAlbum);
 
