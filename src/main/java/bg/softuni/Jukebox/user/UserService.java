@@ -21,21 +21,17 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final ModelMapper modelMapper;
-    private final NotificationService notificationService;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper, NotificationService notificationService) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.modelMapper = modelMapper;
-        this.notificationService = notificationService;
     }
 
     public void validateUserRegistration(RegisterUserRequest registerUserRequest) {
 
         User byUsernameOrEmail = userRepository.findByUsernameOrEmail(registerUserRequest.getUsername(), registerUserRequest.getEmail());
         if (byUsernameOrEmail != null) {
-            throw new UserAlreadyExistsException("Username is in used, choose another one!");
+            throw new UserAlreadyExistsException("Username is in use, choose another one!");
         }
     }
 
@@ -47,18 +43,21 @@ public class UserService implements UserDetailsService {
         return new AuthenticationMetadata(user.getId(), username, user.getPassword(), user.getRole(), user.isBanned());
     }
 
-    public Notification register(RegisterUserRequest registerUserRequest) {
+    public User register(RegisterUserRequest registerUserRequest) {
 
-        User user = modelMapper.map(registerUserRequest, User.class);
-        user.setPassword(passwordEncoder.encode(registerUserRequest.getPassword()));
+        User user = User.builder()
+                .username(registerUserRequest.getUsername())
+                .email(registerUserRequest.getEmail())
+                .password(passwordEncoder.encode(registerUserRequest.getPassword()))
+                .role(registerUserRequest.getRole())
+                .build();
 
         if (user.getRole() == null) {
             user.setRole(Role.USER);
         }
 
-        userRepository.save(user);
-
-        return notificationService.sendWelcomeNotification(registerUserRequest);
+        User saved = userRepository.save(user);
+        return saved;
     }
 
     public User findByUsername(String username) {

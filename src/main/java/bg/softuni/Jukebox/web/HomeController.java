@@ -88,7 +88,7 @@ public class HomeController {
                     "org.springframework.validation.BindingResult.registerUserRequest", bindingResult);
             return "redirect:/register";
         }
-        Notification notification = userService.register(registerUserRequest);
+        Notification notification = notificationService.sendWelcomeNotification(registerUserRequest);
         model.addAttribute("notification", notification);
         return "redirect:/login";
     }

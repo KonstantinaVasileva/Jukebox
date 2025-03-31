@@ -16,7 +16,8 @@
     <p th:text="${notification.body}">Notification Body</p>
 
     <div class="button-container">
-        <form th:unless="${notification.readed} && ${user.role.name()!='ADMIN'}" th:action="@{/notifications/read/{id}(id=${notification.id})}"
+        <form th:unless="${notification.readed}"
+              th:action="@{/notifications/read/{id}(id=${notification.id})}"
               th:method="get">
             <button type="submit" class="mark-read-btn">Mark as Read</button>
         </form>
