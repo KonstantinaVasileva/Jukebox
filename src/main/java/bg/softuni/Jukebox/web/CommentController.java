@@ -89,7 +89,7 @@ public class CommentController {
     public String report(@PathVariable UUID id) {
 
         UUID bandId = commentService.getBandIdByCommentId(id);
-        commentService.reportComment(id);
+        commentService.switchReportComment(id);
 
         return "redirect:/comments/" + bandId;
     }
@@ -105,7 +105,7 @@ public class CommentController {
     @GetMapping("/unreport/{id}")
     public String unreportComment(@PathVariable UUID id) {
 
-        commentService.unreportComment(id);
+        commentService.switchReportComment(id);
         return "redirect:/comments/report/all";
     }
 }

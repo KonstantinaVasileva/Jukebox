@@ -53,9 +53,6 @@ public class GenreServiceUTest {
 
     @Test
     void throwExceptionIfGenreNotFound() {
-        Genre genre = Genre.builder()
-                .name(GenreType.ROCK)
-                .build();
 
         when(genreRepository.findByName(GenreType.ROCK)).thenReturn(Optional.empty());
 

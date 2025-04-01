@@ -60,25 +60,16 @@ public class CommentService {
         return commentRepository.findByAuthor_IdAndDeletedIs(userId, false);
     }
 
-    public void reportComment(UUID id) {
+    public void switchReportComment(UUID id) {
         Comment comment = commentRepository.getCommentsById(id)
                 .orElseThrow(() -> new RuntimeException("Comment not found"));
 
-        comment.setReported(true);
+        comment.setReported(!comment.isReported());
         commentRepository.save(comment);
     }
 
     public List<Comment> getReportedComments() {
         return commentRepository.getAllByReported(true);
-    }
-
-    public void unreportComment(UUID id) {
-
-        Comment comment = commentRepository.getCommentsById(id)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
-
-        comment.setReported(false);
-        commentRepository.save(comment);
     }
 
     public Map<UUID, Integer> getDeletedComments() {
