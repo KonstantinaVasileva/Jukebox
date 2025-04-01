@@ -1,12 +1,9 @@
 package bg.softuni.Jukebox.user;
 
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
-import bg.softuni.Jukebox.notification.client.dto.Notification;
-import bg.softuni.Jukebox.notification.service.NotificationService;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import bg.softuni.Jukebox.security.AuthenticationMetadata;
 import bg.softuni.Jukebox.web.dto.SwitchUserRole;
-import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

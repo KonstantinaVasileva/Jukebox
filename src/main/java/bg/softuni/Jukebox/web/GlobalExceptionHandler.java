@@ -2,9 +2,9 @@ package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
-import bg.softuni.Jukebox.exception.UsernameNotFoundException;
 import jakarta.persistence.NoResultException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -5,12 +5,19 @@ import bg.softuni.Jukebox.notification.service.NotificationService;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -24,9 +31,6 @@ public class UserServiceUTest {
 
     @Mock
     private PasswordEncoder passwordEncoder;
-
-    @Mock
-    private NotificationService notificationService;
 
     @InjectMocks
     private UserService userService;
@@ -60,7 +64,7 @@ public class UserServiceUTest {
     }
 
     @Test
-    void happyCaseWhenRegisterUser(){
+    void happyCaseWhenRegisterUser() {
         RegisterUserRequest registerUserRequest = RegisterUserRequest.builder()
                 .username("username")
                 .email("email@example.com")
@@ -91,5 +95,91 @@ public class UserServiceUTest {
 
         assertNotNull(userService.findByUsername(user.getUsername()));
         assertEquals(user.getUsername(), userService.findByUsername(user.getUsername()).getUsername());
+    }
+
+    @Test
+    void throwExceptionWhenUserDoesNotExist() {
+        User user = User.builder()
+                .username("username")
+                .build();
+
+        when(userRepository.findByUsername(any())).thenReturn(Optional.empty());
+
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> userService.findByUsername(user.getUsername()));
+        assertEquals("User with username username not found!", exception.getMessage());
+    }
+
+    @ParameterizedTest
+    @MethodSource("banStatus")
+    void changeStatusWhenSwitchBan(boolean currentStatus, boolean newStatus) {
+        UUID userId = UUID.randomUUID();
+        User user = User.builder()
+                .banned(currentStatus)
+                .build();
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        userService.switchBan(userId);
+
+        assertEquals(newStatus, user.isBanned());
+    }
+
+    private static Stream<Arguments> banStatus() {
+
+        return Stream.of(
+                Arguments.of(true, false),
+                Arguments.of(false, true)
+        );
+    }
+
+    @Test
+    void happyCaseWhenFindUserById() {
+        User user = User.builder()
+                .id(UUID.randomUUID())
+                .build();
+
+        when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+        assertNotNull(userService.findById(user.getId()));
+        assertEquals(user.getUsername(), userService.findById(user.getId()).getUsername());
+    }
+
+    @Test
+    void throwExceptionWhenNoFindUserById() {
+        UUID id = UUID.randomUUID();
+        when(userRepository.findById(id)).thenReturn(Optional.empty());
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> userService.findById(id));
+        assertEquals("User with id " + id + " not found!", exception.getMessage());
+    }
+
+    @Test
+    void happyCaseWhenGetAllUsers() {
+        List<User> users = userRepository.findAll();
+        assertNotNull(users);
+        assertEquals(users.size(), userService.getAllUsers().size());
+    }
+
+    @Test
+    void throwExceptionWhenTryToDeleteUsers() {
+        User user = User.builder()
+                .id(UUID.randomUUID())
+                .build();
+        when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> userService.deleteUser(user.getId()));
+        assertEquals("User with id " + user.getId() + " not found!", exception.getMessage());
+    }
+
+    @Test
+    void happyCaseWhenDeleteUsers() {
+        User user = User.builder()
+                .id(UUID.randomUUID())
+                .build();
+
+        when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+
+        userService.deleteUser(user.getId());
+
+        when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
+
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> userService.findById(user.getId()));
+        assertEquals("User with id " + user.getId() + " not found!", exception.getMessage());
     }
 }
