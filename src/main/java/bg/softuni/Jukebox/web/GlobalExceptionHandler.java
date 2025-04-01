@@ -1,6 +1,7 @@
 package bg.softuni.Jukebox.web;
 
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
+import bg.softuni.Jukebox.exception.SongNotFoundException;
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
 import jakarta.persistence.NoResultException;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,13 @@ public class GlobalExceptionHandler {
     public String handlerSearchNotFoundException(RedirectAttributes redirectAttributes,
                                                  SearchNotFoundException searchNotFoundException) {
         redirectAttributes.addFlashAttribute("searchNotFoundException", searchNotFoundException.getMessage());
+        return "redirect:/home";
+    }
+
+    @ExceptionHandler({SongNotFoundException.class})
+    public String handlerSongNotFoundException(RedirectAttributes redirectAttributes,
+                                                 SongNotFoundException songNotFoundException) {
+        redirectAttributes.addFlashAttribute("songNotFoundException", songNotFoundException.getMessage());
         return "redirect:/home";
     }
 

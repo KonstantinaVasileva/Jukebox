@@ -1,7 +1,6 @@
 package bg.softuni.Jukebox.user;
 
 import bg.softuni.Jukebox.exception.UserAlreadyExistsException;
-import bg.softuni.Jukebox.notification.service.NotificationService;
 import bg.softuni.Jukebox.web.dto.RegisterUserRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

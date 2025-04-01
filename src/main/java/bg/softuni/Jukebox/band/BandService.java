@@ -2,6 +2,7 @@ package bg.softuni.Jukebox.band;
 
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import bg.softuni.Jukebox.genre.GenreService;
+import bg.softuni.Jukebox.genre.GenreType;
 import bg.softuni.Jukebox.web.dto.BandSeed;
 import bg.softuni.Jukebox.genre.Genre;
 import com.google.gson.Gson;
@@ -61,5 +62,9 @@ public class BandService {
 
     public Band findByName(String name) {
         return bandRepository.findByName(name);
+    }
+
+    public List<Band> findByGenre(Genre title) {
+        return bandRepository.findByGenre(title);
     }
 }

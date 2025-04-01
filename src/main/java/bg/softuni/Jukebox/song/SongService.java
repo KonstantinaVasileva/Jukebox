@@ -2,6 +2,7 @@ package bg.softuni.Jukebox.song;
 
 import bg.softuni.Jukebox.album.AlbumService;
 import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.exception.SongNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public class SongService {
     }
 
     public Song findById(UUID id) {
-        return songRepository.findById(id).orElse(null);
+        return songRepository.findById(id)
+                .orElseThrow(() -> new SongNotFoundException("Song not found"));
     }
 
     public void seed() {

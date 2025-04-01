@@ -1,5 +1,6 @@
 package bg.softuni.Jukebox.genre;
 
+import bg.softuni.Jukebox.band.BandService;
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
 import bg.softuni.Jukebox.web.dto.GenreSeed;
 import bg.softuni.Jukebox.band.Band;
@@ -17,12 +18,12 @@ public class GenreService {
 
     private final GenreRepository genreRepository;
     private final Gson gson;
-    private final ModelMapper modelMapper;
+    private final BandService bandService;
 
-    public GenreService(GenreRepository genreRepository, Gson gson, ModelMapper modelMapper) {
+    public GenreService(GenreRepository genreRepository, Gson gson, BandService bandService) {
         this.genreRepository = genreRepository;
         this.gson = gson;
-        this.modelMapper = modelMapper;
+        this.bandService = bandService;
     }
 
     public void seed() throws FileNotFoundException {
@@ -30,15 +31,20 @@ public class GenreService {
             String FILE_PATH = "src/main/resources/files/genre.json";
             GenreSeed[] genreSeeds = gson.fromJson(new FileReader(FILE_PATH), GenreSeed[].class);
             for (GenreSeed genreSeed : genreSeeds) {
-                Genre genre = new Genre();
-                modelMapper.map(genreSeed, genre);
+                Genre genre = Genre.builder()
+                        .name(GenreType.valueOf(genreSeed.getName()))
+                        .description(genreSeed.getDescription())
+                        .build();
+
                 genreRepository.save(genre);
             }
         }
     }
 
     public List<Band> findBandByGenre(String title) {
-        return findGenreByName(title.toUpperCase()).getBands();
+
+        Genre genre = findGenreByName(title.toUpperCase());
+        return bandService.findByGenre(genre);
     }
 
     public Genre findGenreByName(String name) {

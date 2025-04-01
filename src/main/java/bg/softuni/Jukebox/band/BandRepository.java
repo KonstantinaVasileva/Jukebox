@@ -1,5 +1,7 @@
 package bg.softuni.Jukebox.band;
 
+import bg.softuni.Jukebox.genre.Genre;
+import bg.softuni.Jukebox.genre.GenreType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +16,6 @@ public interface BandRepository extends JpaRepository<Band, UUID> {
     List<Band> findByNameContainingIgnoreCase(String name);
 
 
+    List<Band> findByGenre(Genre genre);
 }
 

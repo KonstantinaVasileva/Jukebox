@@ -2,9 +2,7 @@ package bg.softuni.Jukebox.genre;
 
 import bg.softuni.Jukebox.band.Band;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +11,8 @@ import java.util.UUID;
 @Table(name = "genres")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Genre {
     @Id
