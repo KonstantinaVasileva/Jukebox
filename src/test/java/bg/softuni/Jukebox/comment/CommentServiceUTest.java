@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -77,10 +78,20 @@ public class CommentServiceUTest {
         Comment comment = new Comment();
         comment.setId(UUID.randomUUID());
 
-        when(commentRepository.getCommentsById(comment.getId())).thenReturn(Optional.of(comment));
+        when(commentRepository.findById(comment.getId())).thenReturn(Optional.of(comment));
 
         commentService.setCommentToDelete(comment.getId());
         assertTrue(comment.isDeleted());
+    }
+
+    @Test
+    void throwExceptionIfCommentNotFound() {
+        UUID id = UUID.randomUUID();
+        when(commentRepository.getCommentsById(id)).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> commentService.getCommentById(id));
+
+        assertEquals("Comment not found", exception.getMessage());
     }
 
     @Test
@@ -117,7 +128,7 @@ public class CommentServiceUTest {
         comment.setId(UUID.randomUUID());
         comment.setReported(currentStatus);
 
-        when(commentRepository.getCommentsById(comment.getId())).thenReturn(Optional.of(comment));
+        when(commentRepository.findById(comment.getId())).thenReturn(Optional.of(comment));
 
         commentService.switchReportComment(comment.getId());
 
@@ -138,7 +149,22 @@ public class CommentServiceUTest {
         when(commentRepository.getAllByReported(true)).thenReturn(comments);
 
         assertEquals(comments, commentService.getReportedComments());
+    }
 
+    @Test
+    void successfullyGetDeletedCommentsByUser() {
+        UUID authorId = UUID.randomUUID();
+        User user = User.builder()
+                .id(authorId)
+                .build();
+        Map<UUID, Integer> deletedComments = Map.of(authorId, 1);
+
+        List<Comment> comments = List.of(new Comment());
+
+        when(commentRepository.getAllByAuthor_IdAndDeleted(authorId, true)).thenReturn(comments);
+        when(userService.getAllUsers()).thenReturn(List.of(user));
+
+        assertEquals(deletedComments, commentService.getDeletedComments());
     }
 
 }

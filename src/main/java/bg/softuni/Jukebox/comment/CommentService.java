@@ -8,10 +8,7 @@ import bg.softuni.Jukebox.user.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CommentService {
@@ -44,15 +41,19 @@ public class CommentService {
     }
 
     public void setCommentToDelete(UUID id) {
-        Comment comment = commentRepository.getCommentsById(id)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
+        Comment comment = getCommentById(id);
 
         comment.setDeleted(true);
         commentRepository.save(comment);
     }
 
+    public Comment getCommentById(UUID id) {
+        return commentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+    }
+
     public UUID getBandIdByCommentId(UUID id) {
-        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("Comment not found"));
+        Comment comment = getCommentById(id);
         return comment.getBand().getId();
     }
 
@@ -61,8 +62,7 @@ public class CommentService {
     }
 
     public void switchReportComment(UUID id) {
-        Comment comment = commentRepository.getCommentsById(id)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
+        Comment comment = getCommentById(id);
 
         comment.setReported(!comment.isReported());
         commentRepository.save(comment);
