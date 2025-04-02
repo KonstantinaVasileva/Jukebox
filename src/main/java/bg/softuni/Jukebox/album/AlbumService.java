@@ -29,7 +29,8 @@ public class AlbumService {
     }
 
     public Album findAlbumByTitleAndBand(String title, String band) {
-        return albumRepository.findByTitleAndBand_Name(title, band).orElse(null);
+        return albumRepository.findByTitleAndBand_Name(title, band)
+                .orElseThrow(() -> new SearchNotFoundException("Not found " + title + " album."));
     }
 
     public boolean existsById(UUID id) {
@@ -37,7 +38,8 @@ public class AlbumService {
     }
 
     public Album findById(UUID id) {
-        return albumRepository.findById(id).orElse(null);
+        return albumRepository.findById(id)
+                .orElseThrow(() -> new SearchNotFoundException("Album not found"));
     }
 
     public void seed() {
