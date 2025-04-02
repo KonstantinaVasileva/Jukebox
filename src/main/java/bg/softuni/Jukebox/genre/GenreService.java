@@ -6,6 +6,7 @@ import bg.softuni.Jukebox.web.dto.GenreSeed;
 import bg.softuni.Jukebox.band.Band;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
@@ -20,7 +21,7 @@ public class GenreService {
     private final Gson gson;
     private final BandService bandService;
 
-    public GenreService(GenreRepository genreRepository, Gson gson, BandService bandService) {
+    public GenreService(GenreRepository genreRepository, Gson gson,@Lazy BandService bandService) {
         this.genreRepository = genreRepository;
         this.gson = gson;
         this.bandService = bandService;

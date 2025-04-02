@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: Jukebox
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jukebox?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+  security:
+    user:
+      name: user
+      password: 1111
+logging:
+  level:
+    org:
+      hibernate:
+        persister:
+          entity: ERROR
