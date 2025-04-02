@@ -1,6 +1,7 @@
 package bg.softuni.Jukebox.band;
 
 import bg.softuni.Jukebox.exception.SearchNotFoundException;
+import bg.softuni.Jukebox.exception.SongNotFoundException;
 import bg.softuni.Jukebox.genre.GenreService;
 import bg.softuni.Jukebox.genre.GenreType;
 import bg.softuni.Jukebox.web.dto.BandSeed;
@@ -47,7 +48,7 @@ public class BandService {
 
         List<Band> band = bandRepository.findByNameContainingIgnoreCase(name);
         if (band.isEmpty()) {
-            throw new SearchNotFoundException("Not found " + name + " album.");
+            throw new SearchNotFoundException("Not found " + name + " band.");
         }
         return band;
     }
@@ -57,14 +58,24 @@ public class BandService {
     }
 
     public Band findById(UUID id) {
-        return bandRepository.findById(id).orElseThrow(()-> new RuntimeException("Album not found"));
+        return bandRepository.findById(id)
+                .orElseThrow(() -> new SearchNotFoundException("Band not found"));
     }
 
     public Band findByName(String name) {
-        return bandRepository.findByName(name);
+        Band band = bandRepository.findByName(name);
+        if (band == null) {
+            throw new SearchNotFoundException("Not found " + name + " band.");
+        }
+        return band;
     }
 
     public List<Band> findByGenre(Genre title) {
-        return bandRepository.findByGenre(title);
+        List<Band> bands = bandRepository.findByGenre(title);
+        if (bands.isEmpty()) {
+            String genre = title.getName().name();
+            throw new SearchNotFoundException("Not found band in " + genre + ".");
+        }
+        return bands;
     }
 }

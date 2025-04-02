@@ -45,8 +45,6 @@ public class SongServiceUTest {
 
         when(songRepository.existsById(song.getId())).thenReturn(true);
 
-        songService.existsById(song.getId());
-
         assertTrue(songService.existsById(song.getId()));
     }
 
