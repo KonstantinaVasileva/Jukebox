@@ -65,7 +65,7 @@ public class UserService implements UserDetailsService {
 
     public void switchBan(UUID id) {
 
-        User byId = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " not found!"));
+        User byId = findById(id);
         byId.setBanned(!byId.isBanned());
         userRepository.save(byId);
     }
@@ -81,13 +81,13 @@ public class UserService implements UserDetailsService {
 
     public void switchRole(UUID id, SwitchUserRole switchUserRole) {
 
-        User byId = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " not found!"));
+        User byId = findById(id);
         byId.setRole(switchUserRole.getRole());
         userRepository.save(byId);
     }
 
     public void deleteUser(UUID id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User with id " + id + " not found!"));
+        User user = findById(id);
         userRepository.delete(user);
     }
 }

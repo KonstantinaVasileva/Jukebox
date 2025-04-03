@@ -166,9 +166,11 @@ public class CommentControllerApiTest {
         List<Comment> reportedComments = List.of(new Comment());
         when(commentService.getReportedComments()).thenReturn(reportedComments);
         AuthenticationMetadata principal = new AuthenticationMetadata(UUID.randomUUID(), "username", "password", Role.ADMIN, false);
+
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/comments/report/all")
                 .with(user(principal))
                 .with(csrf());
+
         mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("reportedComments"))

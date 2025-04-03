@@ -40,13 +40,13 @@ public class UserController {
         return "users-all";
     }
 
-    @PostMapping("{id}/ban")
+    @PostMapping("/{id}/ban")
     public String switchUserBan(@PathVariable UUID id) {
         userService.switchBan(id);
         return "redirect:/users/all";
     }
 
-    @PostMapping("{id}/role")
+    @PostMapping("/{id}/role")
     public String switchUserRole(@PathVariable UUID id, SwitchUserRole switchUserRole) {
         userService.switchRole(id, switchUserRole);
         return "redirect:/users/all";
