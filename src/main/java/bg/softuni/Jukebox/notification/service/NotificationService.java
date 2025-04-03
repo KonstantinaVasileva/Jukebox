@@ -88,7 +88,7 @@ public class NotificationService {
         return Objects.requireNonNull(responseEntity).getBody();
     }
 
-    public List<Notification> getErrorStatusNotificationByUser(UUID id) {
+    public List<Notification> getWarningStatusNotificationByUser(UUID id) {
         return notificationClient.errorStatus(id).getBody();
     }
 }

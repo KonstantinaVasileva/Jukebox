@@ -52,7 +52,7 @@ public class NotificationController {
 
     @GetMapping("/error-status/{id}")
     public String getErrorStatusNotification(@PathVariable UUID id, Model model) {
-        List<Notification> errorStatusNotificationByUser = notificationService.getErrorStatusNotificationByUser(id);
+        List<Notification> errorStatusNotificationByUser = notificationService.getWarningStatusNotificationByUser(id);
         model.addAttribute("errorStatusNotificationByUser", errorStatusNotificationByUser);
         return "error-status";
     }
