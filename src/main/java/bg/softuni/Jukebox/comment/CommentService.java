@@ -13,7 +13,6 @@ import java.util.*;
 @Service
 public class CommentService {
 
-
     private final CommentRepository commentRepository;
     private final BandService bandService;
     private final UserService userService;
@@ -42,7 +41,6 @@ public class CommentService {
 
     public void setCommentToDelete(UUID id) {
         Comment comment = getCommentById(id);
-
         comment.setDeleted(true);
         commentRepository.save(comment);
     }

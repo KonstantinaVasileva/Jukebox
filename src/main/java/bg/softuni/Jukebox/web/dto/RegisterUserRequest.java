@@ -3,6 +3,7 @@ package bg.softuni.Jukebox.web.dto;
 import bg.softuni.Jukebox.user.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -22,8 +23,8 @@ public class RegisterUserRequest {
     private Role role;
 
     @NotBlank
-    //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
-    //message = "Password must content minimum eight characters, at least one letter, one number and one special character!")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",
+    message = "Password must content minimum eight characters, at least one letter, one number and one special character!")
     private String password;
 
     private String repeatPassword;

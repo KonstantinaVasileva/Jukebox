@@ -15,7 +15,6 @@ public interface BandRepository extends JpaRepository<Band, UUID> {
 
     List<Band> findByNameContainingIgnoreCase(String name);
 
-
     List<Band> findByGenre(Genre genre);
 }
 
