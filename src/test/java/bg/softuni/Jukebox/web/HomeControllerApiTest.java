@@ -39,20 +39,18 @@ public class HomeControllerApiTest {
     private NotificationService notificationService;
 
     @Autowired
-    private MockMvc mvc;
-    @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void getRequestToIndexEndpoint_ReturnsIndexPage() throws Exception {
+    void getRequestToIndexEndpoint_returnsIndexPage() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/");
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
     }
 
     @Test
-    void getRequestToHomeEndpoint_ReturnsHomePage() throws Exception {
+    void getRequestToHomeEndpoint_returnsHomePage() throws Exception {
 
         when(userService.findById(any())).thenReturn(User.builder()
                 .id(UUID.randomUUID())
@@ -75,7 +73,7 @@ public class HomeControllerApiTest {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/home")
                 .with(user(principal));
 
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
                 .andExpect(model().attributeExists("user"))
@@ -85,17 +83,17 @@ public class HomeControllerApiTest {
     }
 
     @Test
-    void getUnauthenticatedHomeEndpoint_ReturnsLoginPage() throws Exception {
+    void getUnauthenticatedHomeEndpoint_returnsLoginPage() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/home");
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().is3xxRedirection());
         verify(userService, times(0)).findById(any());
     }
 
     @Test
-    void getRequestToRegisterEndpoint_ReturnsRegisterPage() throws Exception {
+    void getRequestToRegisterEndpoint_returnsRegisterPage() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/register");
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("register"));
     }
@@ -133,18 +131,18 @@ public class HomeControllerApiTest {
     }
 
     @Test
-    void getRequestToLoginEndpoint_ReturnsLoginPage() throws Exception {
+    void getRequestToLoginEndpoint_returnsLoginPage() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/login");
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("login"))
-        .andExpect(model().attributeExists("loginUserRequest"));
+                .andExpect(model().attributeExists("loginUserRequest"));
     }
 
     @Test
     void getRequestToLoginEndpoint_returnLogin() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/login")
-                        .param("error", "invalid");
+                .param("error", "invalid");
         mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("login"))
@@ -152,9 +150,9 @@ public class HomeControllerApiTest {
     }
 
     @Test
-    void getTermsAndPrivacyEndpoint_ReturnsTermsAndPrivacyPage() throws Exception {
+    void getTermsAndPrivacyEndpoint_returnsTermsAndPrivacyPage() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/register/terms-and-privacy");
-        mvc.perform(request)
+        mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(view().name("terms-and-conditions"));
     }
