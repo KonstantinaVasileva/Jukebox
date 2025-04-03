@@ -1,7 +1,9 @@
 package bg.softuni.Jukebox.song;
 
 import bg.softuni.Jukebox.album.AlbumService;
+import bg.softuni.Jukebox.band.Band;
 import bg.softuni.Jukebox.band.BandService;
+import bg.softuni.Jukebox.genre.Genre;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class SongServiceUTest {
@@ -57,6 +59,19 @@ public class SongServiceUTest {
         when(songRepository.findById(song.getId())).thenReturn(Optional.of(song));
         assertNotNull(songService.findById(song.getId()));
         assertEquals(song, songService.findById(song.getId()));
+    }
+
+    @Test
+    void successfullySeedSongs(){
+
+        Band band = new Band();
+        band.setName("Band");
+        band.setGenre(new Genre());
+
+        when(songRepository.count()).thenReturn(0L);
+        when(bandService.findByName(any())).thenReturn(band);
+        songService.seed();
+        verify(songRepository, times(1)).saveAll(anyList());
     }
 
 }
