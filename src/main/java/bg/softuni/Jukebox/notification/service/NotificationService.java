@@ -37,16 +37,7 @@ public class NotificationService {
                 .recipientId(byUsername.getId())
                 .build();
 
-        ResponseEntity<Notification> httpResponse = null;
-
-        try {
-            httpResponse = notificationClient.sendNotification(notificationRequest);
-            if (!httpResponse.getStatusCode().is2xxSuccessful()) {
-                log.error(Objects.requireNonNull(httpResponse.getBody()).toString());
-            }
-        } catch (Exception e) {
-            log.warn(e.getMessage());
-        }
+        ResponseEntity<Notification> httpResponse = getNotificationResponseEntity(notificationRequest);
 
         return Objects.requireNonNull(httpResponse).getBody();
     }
@@ -89,6 +80,42 @@ public class NotificationService {
     }
 
     public List<Notification> getWarningStatusNotificationByUser(UUID id) {
-        return notificationClient.errorStatus(id).getBody();
+        return notificationClient.warningStatus(id).getBody();
+    }
+
+    public void sendInfoNotificationToAllUsers() {
+
+        userService.getAllUsers().forEach(user -> {
+            int size = getWarningStatusNotificationByUser(user.getId()).size();
+            sendNotification(user.getId(),size);
+        });
+
+    }
+
+    private void sendNotification(UUID id, int warningCommentCount) {
+
+        User byUsername = userService.findById(id);
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .title("Message from Jukebox")
+                .body("You have %s warnings in Jukebox".formatted(warningCommentCount))
+                .type("INFO")
+                .recipientId(byUsername.getId())
+                .build();
+
+        getNotificationResponseEntity(notificationRequest);
+    }
+
+    private ResponseEntity<Notification> getNotificationResponseEntity(NotificationRequest notificationRequest) {
+        ResponseEntity<Notification> httpResponse = null;
+
+        try {
+            httpResponse = notificationClient.sendNotification(notificationRequest);
+            if (!httpResponse.getStatusCode().is2xxSuccessful()) {
+                log.error(Objects.requireNonNull(httpResponse.getBody()).toString());
+            }
+        } catch (Exception e) {
+            log.warn(e.getMessage());
+        }
+        return httpResponse;
     }
 }
