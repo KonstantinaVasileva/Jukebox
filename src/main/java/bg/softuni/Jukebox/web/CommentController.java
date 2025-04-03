@@ -53,12 +53,13 @@ public class CommentController {
                              Model model,
                              Principal principal) {
 
-        if (bindingResult.hasErrors()) {
-            return "comment-add";
-        }
-
         Band band = bandService.findById(id);
         model.addAttribute("band", band);
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/comments/add/{id}";
+        }
+
         String username = principal.getName();
         User author = userService.findByUsername(username);
         commentService.addComment(author, comment, id);

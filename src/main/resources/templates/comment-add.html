@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/css/comment-add.css">
 <head th:replace="~{fragments/common :: head}"></head>
 <body>
@@ -17,9 +18,11 @@
         form="comment"
         placeholder="Enter your comment"
         th:field="*{content}"></textarea>
+        <span class="alert-danger"
+              th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"></span>
     </label>
     <button type="submit">Submit</button>
 </form>
-
 </body>
 </html>
