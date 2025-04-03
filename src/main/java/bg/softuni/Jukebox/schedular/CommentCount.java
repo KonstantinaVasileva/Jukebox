@@ -20,8 +20,7 @@ public class CommentCount {
         this.notificationService = notificationService;
     }
 
-//    @Scheduled(cron = "0 0 0 * * ?")
-    @Scheduled(fixedDelay = 50000)
+    @Scheduled(cron = "0 0 0 * * ?")
     public void countWarningCommentsEveryDay() {
 
         notificationService.sendInfoNotificationToAllUsers();
